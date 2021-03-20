@@ -20,8 +20,7 @@ class DashBoardPageState extends State<DashBoardPage> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize:
-            Size.fromHeight(MediaQuery.of(context).size.height * 0.60),
+        preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.11),
         child: Container(
           decoration: BoxDecoration(color: btnColor, boxShadow: [
             BoxShadow(

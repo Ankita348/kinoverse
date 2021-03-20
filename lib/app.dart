@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 bool isLight = true;
 
 class App {
-
   static const font1 = "Courier Prime";
   static const font2 = "Ubuntu";
 
@@ -12,6 +11,13 @@ class App {
   static const landing1 = '$root' + 'landing1.png';
   static const landing2 = '$root' + 'landing2.jpg';
   static const landing3 = '$root' + 'landing3.jpg';
+
+  ///bottomNev text
+  static const messages = '$root' + 'messages.png';
+  static const jobs = '$root' + 'jobs.png';
+  static const talent = '$root' + 'talent.png';
+  static const alert = '$root' + 'alert.png';
+  static const drawerIcon = '$root' + 'drawerIcon.png';
 
   static Route createRoute({Widget page}) {
     return PageRouteBuilder(
@@ -32,8 +38,6 @@ class App {
     );
   }
 }
-
-
 
 getColorIcon() {
   if (isLight) {
@@ -102,4 +106,10 @@ getColorBorder() {
   }
 }
 
+getDeviceHeight(context) {
+  return MediaQuery.of(context).size.height;
+}
 
+getDeviceWidth(context) {
+  return MediaQuery.of(context).size.width;
+}

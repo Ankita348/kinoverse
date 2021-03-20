@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/hire_sign_up.dart';
 import 'package:kinoverse/Page/sign_up/sign_up_model.dart';
 import 'package:kinoverse/app.dart';
+import 'package:kinoverse/common/common_route.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -16,13 +18,12 @@ class SignUpState extends State<SignUp> {
     model ?? (model = SignUpViewModel(this));
 
     return Scaffold(
-
       backgroundColor: bgColor,
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.only(top: 60),
           child: Column(
-           // mainAxisSize: MainAxisSize.min,
+            // mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Center(
                 child: Image.asset(
@@ -30,8 +31,7 @@ class SignUpState extends State<SignUp> {
                   width: MediaQuery.of(context).size.height * 0.4,
                 ),
               ),
-              buttonRow(),
-
+              buttonRow(context),
             ],
           ),
         ),
@@ -41,25 +41,24 @@ class SignUpState extends State<SignUp> {
 
 // =====================       BOTTOM ROW OF BUTTON        ========================
 
-  Widget buttonRow() {
+  Widget buttonRow(context) {
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       height: MediaQuery.of(context).size.height / 3.0,
       child: Column(
         children: [
           newText(),
-          loginButton(),
-
+          loginButton(context),
         ],
       ),
     );
   }
 
-
-  Widget loginButton() {
+  Widget loginButton(context) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
+          CommonRoutePage.goToScreen(context, HireSignUp());
           // CommonRoutePage().gotoSignUpPage(context);
         },
         child: Container(
@@ -102,7 +101,10 @@ class SignUpState extends State<SignUp> {
             color: bgColor,
             textColor: txtColor,
             child: Text("Continue with Google",
-                style: TextStyle(fontSize: 12,   fontWeight: FontWeight.w700,)),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                )),
           ),
         ),
         Text(
@@ -125,13 +127,13 @@ class SignUpState extends State<SignUp> {
             color: bgColor,
             textColor: txtDescriptionColor,
             child: Text("Work email address",
-                style: TextStyle(fontSize: 12,   fontWeight: FontWeight.w400,)),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                )),
           ),
         ),
-
       ],
     );
   }
-
-
 }

@@ -13,6 +13,7 @@ class App {
   static const landing3 = '$root' + 'landing3.jpg';
   static const gallary = '$root' + 'gallary.png';
   static const vactor = '$root' + 'Vector.png';
+<<<<<<< Updated upstream
 
   ///bottomNev text
   static const messages = '$root' + 'messages.png';
@@ -47,6 +48,10 @@ getColorIcon() {
   } else {
     return Colors.white;
   }
+=======
+  static const edit = '$root' + 'edit.png';
+  static const location = '$root' + 'location.png';
+>>>>>>> Stashed changes
 }
 
 Color bgColor = Color(0x00ff3E4346);
@@ -57,6 +62,7 @@ Color colorWhite = Color(0x00ffF7F7FA);
 Color btnBorderWhite = Color(0x00ff929292);
 Color shadowColorBlack = Color(0xFF343739);
 Color blackText = Color(0xFF3E4345);
+Color backContainerColor = Color(0xFF2B2F30);
 
 Color colorBrown = Colors.brown;
 Color colorTextPara = Color(0x00ff73777F);

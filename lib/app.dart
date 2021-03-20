@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 bool isLight = true;
 
 class App {
+
   static const font1 = "Courier Prime";
   static const font2 = "Ubuntu";
 
@@ -11,6 +12,8 @@ class App {
   static const landing1 = '$root' + 'landing1.png';
   static const landing2 = '$root' + 'landing2.jpg';
   static const landing3 = '$root' + 'landing3.jpg';
+  static const gallary = '$root' + 'gallary.png';
+  static const vactor = '$root' + 'Vector.png';
 
   ///bottomNev text
   static const messages = '$root' + 'messages.png';
@@ -46,29 +49,14 @@ getColorIcon() {
     return Colors.white;
   }
 }
-
-getColorBg() {
-  if (isLight) {
-    return Color(0x00ffFFF9F9);
-  } else {
-    return Color(0x00ffFFF9F9);
-  }
-}
-
-getMatColorBg() {
-  if (isLight) {
-    return Colors.white;
-  } else {
-    return Colors.white;
-  }
-}
-
 Color bgColor = Color(0x00ff3E4346);
 Color btnColor = Color(0x00ffA60000);
 Color txtColor = Color(0x00ffF5F5F5);
 Color txtDescriptionColor = Color(0x00ff929292);
 Color colorWhite = Color(0x00ffF7F7FA);
 Color btnBorderWhite = Color(0x00ff929292);
+Color shadowColorBlack = Color(0xFF343739);
+Color blackText = Color(0xFF3E4345);
 
 Color colorBrown = Colors.brown;
 Color colorTextPara = Color(0x00ff73777F);
@@ -106,10 +94,50 @@ getColorBorder() {
   }
 }
 
+getColorIcon() {
+  if (isLight) {
+    return getColorPrimary();
+  } else {
+    return Colors.white;
+  }
+}
+
+getColorBg() {
+  if (isLight) {
+    return Color(0x00ffFFF9F9);
+  } else {
+    return Color(0x00ffFFF9F9);
+  }
+}
+
+getMatColorBg() {
+  if (isLight) {
+    return Colors.white;
+  } else {
+    return Colors.white;
+  }
+}
+
+Route createRoute({Widget page}) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => page,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.fastLinearToSlowEaseIn;
 getDeviceHeight(context) {
   return MediaQuery.of(context).size.height;
 }
 
 getDeviceWidth(context) {
   return MediaQuery.of(context).size.width;
+}
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

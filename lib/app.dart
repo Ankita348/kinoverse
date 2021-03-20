@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 bool isLight = true;
 
 class App {
-
   static const font1 = "Courier Prime";
   static const font2 = "Ubuntu";
 
@@ -49,6 +48,7 @@ getColorIcon() {
     return Colors.white;
   }
 }
+
 Color bgColor = Color(0x00ff3E4346);
 Color btnColor = Color(0x00ffA60000);
 Color txtColor = Color(0x00ffF5F5F5);
@@ -94,14 +94,6 @@ getColorBorder() {
   }
 }
 
-getColorIcon() {
-  if (isLight) {
-    return getColorPrimary();
-  } else {
-    return Colors.white;
-  }
-}
-
 getColorBg() {
   if (isLight) {
     return Color(0x00ffFFF9F9);
@@ -125,13 +117,7 @@ Route createRoute({Widget page}) {
       var begin = Offset(0.0, 1.0);
       var end = Offset.zero;
       var curve = Curves.fastLinearToSlowEaseIn;
-getDeviceHeight(context) {
-  return MediaQuery.of(context).size.height;
-}
 
-getDeviceWidth(context) {
-  return MediaQuery.of(context).size.width;
-}
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
       return SlideTransition(
@@ -140,4 +126,12 @@ getDeviceWidth(context) {
       );
     },
   );
+}
+
+getDeviceHeight(context) {
+  return MediaQuery.of(context).size.height;
+}
+
+getDeviceWidth(context) {
+  return MediaQuery.of(context).size.width;
 }

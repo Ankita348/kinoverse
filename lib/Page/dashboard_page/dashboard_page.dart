@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/post_new_job_1/post_new_job_1.dart';
 import 'package:kinoverse/app.dart';
 
 class DashBoardPage extends StatefulWidget {
@@ -19,7 +20,8 @@ class DashBoardPageState extends State<DashBoardPage> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize:
+            Size.fromHeight(MediaQuery.of(context).size.height * 0.60),
         child: Container(
           decoration: BoxDecoration(color: btnColor, boxShadow: [
             BoxShadow(
@@ -75,23 +77,13 @@ class DashBoardPageState extends State<DashBoardPage> {
   Widget get getMenuByIndex {
     print("menuIndex -> " + widget.menuIndex.toString());
     if (widget.menuIndex == 0) {
-      // return HomePage(changeIndex);
     } else if (widget.menuIndex == 1) {
-      //return MapPage(changeIndex);
-      // return StoreDetailPage(changeIndex);
     } else if (widget.menuIndex == 2) {
-      //return ProfilePage(changeIndex);
+      return PostNewJob1();
     } else if (widget.menuIndex == 3) {
-      // return PostOrdersPage(changeIndex);
     } else if (widget.menuIndex == 4) {
-      // return DeliveryDetailPage(changeIndex);
-    } else if (widget.menuIndex == 5) {
-      // return ReciptPage(changeIndex);
     } else if (widget.menuIndex == 6) {
-      // return ContactPage(changeIndex);
-    } else if (widget.menuIndex == 7) {
-      // return StoreDetailPage(changeIndex);
-    }
+    } else if (widget.menuIndex == 7) {}
   }
 
   changeIndex(int index) {

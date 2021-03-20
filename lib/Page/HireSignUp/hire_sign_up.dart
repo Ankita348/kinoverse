@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/dashboard_page/dashboard_page.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
+import 'package:kinoverse/common/common_route.dart';
 import 'package:kinoverse/common/common_widget.dart';
 
 class HireSignUp extends StatefulWidget {
@@ -25,10 +27,16 @@ class _HireSignUpState extends State<HireSignUp> {
             child: Column(
               // mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Center(
-                  child: Image.asset(
-                    App.logo,
-                    width: MediaQuery.of(context).size.height * 0.4,
+                ///go to dashboard scren
+                GestureDetector(
+                  onTap: () {
+                    CommonRoutePage.goToScreen(context, DashBoardPage(0));
+                  },
+                  child: Center(
+                    child: Image.asset(
+                      App.logo,
+                      width: MediaQuery.of(context).size.height * 0.4,
+                    ),
                   ),
                 ),
                 SizedBox(

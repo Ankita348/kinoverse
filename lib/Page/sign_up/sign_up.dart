@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/hire_sign_up.dart';
+import 'package:kinoverse/Page/HireSignUp/hire_sign_up.dart';
+
 import 'package:kinoverse/Page/sign_up/sign_up_model.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/common_route.dart';

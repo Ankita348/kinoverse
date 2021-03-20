@@ -13,7 +13,9 @@ class App {
   static const landing3 = '$root' + 'landing3.jpg';
   static const gallary = '$root' + 'gallary.png';
   static const vactor = '$root' + 'Vector.png';
-<<<<<<< Updated upstream
+  static const edit = '$root' + 'edit.png';
+  static const location = '$root' + 'location.png';
+
 
   ///bottomNev text
   static const messages = '$root' + 'messages.png';
@@ -48,10 +50,9 @@ getColorIcon() {
   } else {
     return Colors.white;
   }
-=======
-  static const edit = '$root' + 'edit.png';
-  static const location = '$root' + 'location.png';
->>>>>>> Stashed changes
+
+
+
 }
 
 Color bgColor = Color(0x00ff3E4346);

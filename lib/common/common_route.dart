@@ -15,7 +15,7 @@ class CommonRoutePage {
       ),
     );
   }
-  goToScreen(BuildContext context,screen){
+  static goToScreen(BuildContext context,screen){
     Navigator.push(
       context,
       MaterialPageRoute(

@@ -17,5 +17,6 @@ static const String vatId ="VAT ID";
 static const String vatIdEnable ="Enter your VAT ID to enable VAT invoicing";
 static const String timezone ="Timezone";
 static const String address ="Address";
+static const String createNewAccount ="Create New Account";
 
 }

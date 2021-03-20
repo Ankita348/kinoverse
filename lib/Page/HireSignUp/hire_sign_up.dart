@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/HireSignUp/hire_update_profile.dart';
 import 'package:kinoverse/Page/dashboard_page/dashboard_page.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
@@ -14,7 +15,7 @@ class HireSignUp extends StatefulWidget {
 class _HireSignUpState extends State<HireSignUp> {
   bool check1 = false;
   bool check2 = false;
-
+int select=0;
   @override
   Widget build(BuildContext context) {
     print("runtimeType -> " + runtimeType.toString());
@@ -142,7 +143,7 @@ class _HireSignUpState extends State<HireSignUp> {
                         height: 15,
                       ),
                       TextStyleRes.textUbuntuStyleFont2(
-                          text: StringRes.iWantTo, fontSize: 12),
+                          text: StringRes.iWantTo, fontSize: 12,textColor: txtColor),
                       SizedBox(
                         height: 15,
                       ),
@@ -150,22 +151,30 @@ class _HireSignUpState extends State<HireSignUp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CommonWidget.squareButton(
-                            containerColor: btnColor,
+                            containerColor:select!=0?txtColor :btnColor,
                             fontSize: 12.0,
                             height: 40.0,
                             width: 100.0,
                             text: StringRes.hire,
-                            textColor: txtColor,
-                            onTap: () {},
+                            textColor:select!=0?colorBlack :txtColor,
+                            onTap: () {
+                              setState(() {
+                                select=0;
+                              });
+                            },
                           ),
                           CommonWidget.squareButton(
-                            containerColor: txtColor,
+                            containerColor:select!=1?txtColor :btnColor,
                             fontSize: 12.0,
                             height: 40.0,
                             width: 100.0,
                             text: StringRes.work,
-                            textColor: colorBlack,
-                            onTap: () {},
+                            textColor:select!=1?colorBlack :txtColor,
+                            onTap: () {
+                              setState(() {
+                                select=1;
+                              });
+                            },
                           ),
                         ],
                       ),
@@ -178,10 +187,13 @@ class _HireSignUpState extends State<HireSignUp> {
                           title: TextStyleRes.textUbuntuStyleFont2(
                             fontSize: 12,
                             text: StringRes.sendMeUsefulEmail,
+                            textColor: txtColor
                           ),
                           value: check1,
                           onChanged: (newValue) {
-                            check1 = newValue;
+                            setState(() {
+                              check1 = newValue;
+                            });
                           },
                           controlAffinity: ListTileControlAffinity.leading,
                           //  <-- leading Checkbox
@@ -195,10 +207,13 @@ class _HireSignUpState extends State<HireSignUp> {
                           title: TextStyleRes.textUbuntuStyleFont2(
                             fontSize: 12,
                             text: StringRes.privacyPolicyAgreement,
+                            textColor: txtColor
                           ),
                           value: check2,
                           onChanged: (newValue) {
-                            check2 = newValue;
+                           setState(() {
+                             check2 = newValue;
+                           });
                           },
                           activeColor: btnColor,
                           controlAffinity: ListTileControlAffinity
@@ -211,11 +226,13 @@ class _HireSignUpState extends State<HireSignUp> {
                       CommonWidget.squareButton(
                         text: StringRes.createAccount,
                         fontSize: 14.0,
-                        height: 40.0,
+                        height: 35.0,
                         width: 200.0,
                         containerColor: btnColor,
                         textColor: txtColor,
-                        onTap: () {},
+                        onTap: () {
+                          CommonRoutePage.goToScreen(context, HireUpdateProfile());
+                        },
                       )
                     ],
                   ),

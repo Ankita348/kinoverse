@@ -14,12 +14,12 @@ class TextStyleRes{
       ),
     );
   }
-  static  textUbuntuStyleFont2({text,double fontSize}){
+  static  textUbuntuStyleFont2({text,double fontSize,textColor}){
     return Text(
       text,
       style: TextStyle(
         fontFamily: App.font2,
-        color: txtColor,
+        color: textColor,
         fontSize:fontSize,
       ),
     );

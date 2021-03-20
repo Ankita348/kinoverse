@@ -15,6 +15,7 @@ class App {
   static const vactor = '$root' + 'Vector.png';
   static const edit = '$root' + 'edit.png';
   static const location = '$root' + 'location.png';
+  static const profile = '$root' + 'profile.png';
 
 
   ///bottomNev text

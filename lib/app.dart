@@ -15,6 +15,7 @@ class App {
   static const vactor = '$root' + 'Vector.png';
   static const edit = '$root' + 'edit.png';
   static const location = '$root' + 'location.png';
+  static const calendaricon = '$root' + 'calendaricon.png';
   static const profile = '$root' + 'profile.png';
 
 
@@ -24,6 +25,17 @@ class App {
   static const talent = '$root' + 'talent.png';
   static const alert = '$root' + 'alert.png';
   static const drawerIcon = '$root' + 'drawerIcon.png';
+  static const paypal = '$root' + 'paypal.png';
+  static const depositIcon = '$root' + 'depositIcon.png';
+  static const dabitIcon = '$root' + 'dabitIcon.png';
+  static const bankAccountimg = '$root' + 'bankAcountimg.png';
+  static const addic = '$root' + 'add_ic.png';
+  static const total = '$root' + 'total.png';
+  static const charge = '$root' + 'charge.png';
+  static const PayPalLogo = '$root' + 'PayPal-Logo 1.png';
+  static const Mastercard = '$root' + 'Mastercard-logo 1.png';
+  static const Payoneer = '$root' + 'Payoneer-Logo 1.png';
+  static const cil_bank = '$root' + 'cil_bank.png';
 
   static Route createRoute({Widget page}) {
     return PageRouteBuilder(

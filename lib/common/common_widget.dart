@@ -55,5 +55,56 @@ class CommonWidget {
           ),
         ));
   }
+static darkStraightContainer({color,imageName,textAfterImage,dollarString,extratext}){
+    return    Container(
+      color:color ,
+      child: Padding(
+        padding: const EdgeInsets.only(left:8.0,right: 8,top: 8,bottom: 8),
+        child: Row(
+          children: [
+            Container(
+              child: Image.asset(
+                imageName,
+                height: 20,
+                width: 30,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            TextStyleRes.textUbuntuStyleFont2(
+                text:textAfterImage,
+                fontSize: 12,
+                textColor: txtColor),
+            SizedBox(
+              width: 4,
+            ),
+            TextStyleRes.textUbuntuStyleFont2(
+                text:extratext==null?"":extratext,
+                fontSize: 10,
+                textColor: txtDescriptionColor),
+            Spacer(),
+            TextStyleRes.textUbuntuStyleFont2(
+                text: dollarString,
+                fontSize: 12,
+                textColor: txtColor),
+          ],
+        ),
+      ),
+    );
+}
+static activeButton(){
+    return Container(
+      decoration: BoxDecoration(border: Border.all(color: btnColor)),
+      height: 26,
+      width: 80,
+      child: Center(
+        child: TextStyleRes.textUbuntuStyleFont2(
+            text: StringRes.Active,
+            fontSize: 12,
+            textColor: txtDescriptionColor),
+      ),
+    );
+}
 
 }

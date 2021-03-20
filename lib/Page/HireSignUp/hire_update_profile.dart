@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/HireSignUp/hire_contract.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
@@ -39,7 +40,7 @@ int _value=1;
             containerColor: btnColor,
             textColor: txtColor,
             onTap: () {
-              CommonRoutePage.goToScreen(context, HireUpdateProfile());
+              CommonRoutePage.goToScreen(context, StackOver());
             },
           )
         ],

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kinoverse/Page/post_new_job_1/post_new_job_1.dart';
+import 'package:kinoverse/Page/post_new_job_2/post_new_job_2.dart';
+import 'package:kinoverse/Page/post_new_job_3/post_new_job_3.dart';
+import 'package:kinoverse/Page/post_new_job_4/post_new_job_4.dart';
+import 'package:kinoverse/Page/post_new_job_5/post_new_job5.dart';
 import 'package:kinoverse/app.dart';
 
 class DashBoardPage extends StatefulWidget {
@@ -77,8 +81,16 @@ class DashBoardPageState extends State<DashBoardPage> {
     print("menuIndex -> " + widget.menuIndex.toString());
     if (widget.menuIndex == 0) {
     } else if (widget.menuIndex == 1) {
+      return PostNewJob1(changeIndex);
+    } else if (widget.menuIndex == 100) {
+      return PostNewJob2(changeIndex);
+    } else if (widget.menuIndex == 101) {
+      return PostNewJob3(changeIndex);
+    } else if (widget.menuIndex == 102) {
+      return PostNewJob4(changeIndex);
+    } else if (widget.menuIndex == 103) {
+      return PostNewJob5(changeIndex);
     } else if (widget.menuIndex == 2) {
-      return PostNewJob1();
     } else if (widget.menuIndex == 3) {
     } else if (widget.menuIndex == 4) {
     } else if (widget.menuIndex == 6) {
@@ -162,8 +174,13 @@ class DashBoardPageState extends State<DashBoardPage> {
                               App.jobs,
                               height: 15,
                               width: 15,
-                              color:
-                                  widget.menuIndex == 1 ? colorWhite : btnColor,
+                              color: widget.menuIndex == 1 ||
+                                      widget.menuIndex == 100 ||
+                                      widget.menuIndex == 101 ||
+                                      widget.menuIndex == 102 ||
+                                      widget.menuIndex == 103
+                                  ? colorWhite
+                                  : btnColor,
                             ),
                           ),
                           SizedBox(height: 4),
@@ -171,8 +188,13 @@ class DashBoardPageState extends State<DashBoardPage> {
                             "Jobs",
                             style: TextStyle(
                               fontSize: 10,
-                              color:
-                                  widget.menuIndex == 1 ? colorWhite : btnColor,
+                              color: widget.menuIndex == 1 ||
+                                      widget.menuIndex == 100 ||
+                                      widget.menuIndex == 101 ||
+                                      widget.menuIndex == 102 ||
+                                      widget.menuIndex == 103
+                                  ? colorWhite
+                                  : btnColor,
                               fontFamily: App.font2,
                             ),
                           )

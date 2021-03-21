@@ -16,13 +16,17 @@ class App {
   static const edit = '$root' + 'edit.png';
   static const location = '$root' + 'location.png';
 
-
-  ///bottomNev text
   static const messages = '$root' + 'messages.png';
   static const jobs = '$root' + 'jobs.png';
   static const talent = '$root' + 'talent.png';
   static const alert = '$root' + 'alert.png';
   static const drawerIcon = '$root' + 'drawerIcon.png';
+  static const uploadIcon = '$root' + 'uploadicon.png';
+  static const ongoingIcon = '$root' + 'ongoingicon.png';
+  static const oneTimeProjectIcon = '$root' + 'onetimeprojecticon.png';
+  static const complexProjectIcon = '$root' + 'complexprojecticon.png';
+  static const freelancer = '$root' + 'freelancer.png';
+  static const moreFreelancer = '$root' + 'morefreelancer.png';
 
   static Route createRoute({Widget page}) {
     return PageRouteBuilder(
@@ -50,9 +54,6 @@ getColorIcon() {
   } else {
     return Colors.white;
   }
-
-
-
 }
 
 Color bgColor = Color(0x00ff3E4346);
@@ -63,6 +64,7 @@ Color colorWhite = Color(0x00ffF7F7FA);
 Color btnBorderWhite = Color(0x00ff929292);
 Color shadowColorBlack = Color(0xFF343739);
 Color blackText = Color(0xFF3E4345);
+
 Color backContainerColor = Color(0xFF2B2F30);
 
 Color colorBrown = Colors.brown;

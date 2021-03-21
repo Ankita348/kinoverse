@@ -14,6 +14,18 @@ class App {
   static const gallary = '$root' + 'gallary.png';
   static const vactor = '$root' + 'Vector.png';
   static const edit = '$root' + 'edit.png';
+  static const notification = '$root' + 'notification.png';
+  static const search = '$root' + 'search.png';
+  static const filter = '$root' + 'filter.png';
+  static const delete = '$root' + 'delete.png';
+  static const badge = '$root' + 'badge icon.png';
+  static const closeicon = '$root' + 'close icon.png';
+  static const fav = '$root' + 'fav.png';
+  static const inviteTojob = '$root' + 'inviteTojob.png';
+  static const jobsuccess = '$root' + 'jobsuccess.png';
+  static const subscribe = '$root' + 'subscribe.png';
+
+  static const addIcon = '$root' + 'add icon.png';
   static const location = '$root' + 'location.png';
   static const calendaricon = '$root' + 'calendaricon.png';
   static const profile = '$root' + 'profile.png';
@@ -23,6 +35,9 @@ class App {
   static const talent = '$root' + 'talent.png';
   static const alert = '$root' + 'alert.png';
   static const drawerIcon = '$root' + 'drawerIcon.png';
+  static const Attachment = '$root' + 'Attachment Icon.png';
+  static const sendMesg= '$root' + 'send_message.png';
+  static const voiceCall = '$root' + 'Voice Call.png';
 
   static const uploadIcon = '$root' + 'uploadicon.png';
   static const ongoingIcon = '$root' + 'ongoingicon.png';
@@ -30,6 +45,7 @@ class App {
   static const complexProjectIcon = '$root' + 'complexprojecticon.png';
   static const freelancer = '$root' + 'freelancer.png';
   static const moreFreelancer = '$root' + 'morefreelancer.png';
+
 
   static const paypal = '$root' + 'paypal.png';
   static const depositIcon = '$root' + 'depositIcon.png';
@@ -42,6 +58,7 @@ class App {
   static const Mastercard = '$root' + 'Mastercard-logo 1.png';
   static const Payoneer = '$root' + 'Payoneer-Logo 1.png';
   static const cil_bank = '$root' + 'cil_bank.png';
+
 
   static Route createRoute({Widget page}) {
     return PageRouteBuilder(
@@ -79,6 +96,7 @@ Color colorWhite = Color(0x00ffF7F7FA);
 Color btnBorderWhite = Color(0x00ff929292);
 Color shadowColorBlack = Color(0xFF343739);
 Color blackText = Color(0xFF3E4345);
+Color blueGray = Color(0xFF383D3F);
 
 Color backContainerColor = Color(0xFF2B2F30);
 

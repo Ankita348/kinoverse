@@ -21,6 +21,90 @@ class CommonWidget {
     );
   }
 
+  static squareDarkBlueGrayButton(
+      {containerColor,
+      height,
+      width,
+      text,
+      textColor,
+      fontSize,
+      onTap,
+      descriptiontextColor,
+      descriptiontextfontSize,
+      descriptiontexttext}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+          color: containerColor,
+          height: height,
+          width: width,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextStyleRes.textUbuntuStyleFont2(
+                    textColor: textColor, fontSize: fontSize, text: text),
+                SizedBox(
+                  height: 2,
+                ),
+                TextStyleRes.textUbuntuStyleFont2(
+                    textColor: descriptiontextColor,
+                    fontSize: descriptiontextfontSize,
+                    text: descriptiontexttext),
+              ],
+            ),
+          )),
+    );
+  }
+
+  static squareWithIconButton(
+      {containerColor,
+      height,
+      width,
+      text,
+      textColor,
+      fontSize,
+      onTap,
+      imageName,
+      borderColor,
+      sizeboxWidth}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+              color: containerColor,
+              border: Border.all(
+                color: borderColor,
+              )),
+          child: Row(
+            mainAxisAlignment: imageName != null
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 4,
+              ),
+              imageName != null
+                  ? Image.asset(
+                      imageName,
+                      height: 17,
+                      width: 16,
+                    )
+                  : Container(),
+              SizedBox(
+                width: sizeboxWidth,
+              ),
+              TextStyleRes.textUbuntuStyleFont2(
+                  textColor: textColor, fontSize: fontSize, text: text),
+            ],
+          )),
+    );
+  }
+
   static backButton({setState(), toggle}) {
     return GestureDetector(
       onTap: () {
@@ -76,6 +160,77 @@ class CommonWidget {
               text: "Next",
               fontWeight: FontWeight.bold,
               textColor: colorWhite),
+        ),
+      ),
+    );
+  }
+
+  static backWordButton({setState(), toggle}) {
+    return GestureDetector(
+      onTap: () {
+        setState();
+      },
+      child: Container(
+          //  width: 100,
+          decoration: BoxDecoration(
+            color: toggle != 1 ? btnColor : bgColor,
+            border: Border.all(color: btnColor),
+          ),
+          child: Container(
+            margin: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.arrow_back_ios_outlined,
+                  color: colorWhite,
+                  size: 10,
+                ),
+                SizedBox(width: 5),
+                TextStyleRes.textStyleFont1(
+                    fontSize: 10, text: "Back", textColor: colorWhite),
+              ],
+            ),
+          )),
+    );
+  }
+  static backWordWithoutIConButton({setState(), toggle,txt}) {
+    return GestureDetector(
+      onTap: () {
+        setState();
+      },
+      child: Container(
+        //  width: 100,
+          decoration: BoxDecoration(
+            color: toggle != 1 ? btnColor : bgColor,
+            border: Border.all(color: btnColor),
+          ),
+          child: Container(
+            margin: EdgeInsets.all(10),
+            child: TextStyleRes.textStyleFont1(
+                fontSize: 10, text: txt, textColor: colorWhite),
+          )),
+    );
+  }
+  static forwordButton(setState(), toggle, text) {
+    return GestureDetector(
+      onTap: () {
+        setState();
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: toggle != 0 ? btnColor : bgColor,
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: toggle != 0 ? Colors.black : btnColor,
+          //     blurRadius: toggle != 0 ? 3 : 0,
+          //   ),
+          // ],
+          border: Border.all(color: btnColor),
+        ),
+        child: Container(
+          margin: EdgeInsets.only(left: 17, right: 17, top: 10, bottom: 10),
+          child: TextStyleRes.textStyleFont1(
+              fontSize: 10, text: text, textColor: colorWhite),
         ),
       ),
     );
@@ -182,9 +337,7 @@ class CommonWidget {
       width: 80,
       child: Center(
         child: TextStyleRes.textUbuntuStyleFont2(
-            text: StringRes.Active,
-            fontSize: 12,
-            textColor: txtDescriptionColor),
+            text: StringRes.Active, fontSize: 12, textColor: txtColor),
       ),
     );
   }

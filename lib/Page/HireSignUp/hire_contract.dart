@@ -1,25 +1,35 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/HireSignUp/hire_your_notification.dart';
 import 'package:kinoverse/Page/HireSignUp/star_rate.dart';
+import 'package:kinoverse/Page/custom_widget/Hire_contract_tab_view.dart';
+import 'package:kinoverse/Page/custom_widget/Hire_filmMaker.dart';
+import 'package:kinoverse/Page/custom_widget/Hire_payNow_view.dart';
+import 'package:kinoverse/Page/custom_widget/Hire_posting_tab_view.dart';
+import 'package:kinoverse/Page/custom_widget/hire_all_tabe_view.dart';
+import 'package:kinoverse/Page/custom_widget/hire_search_tab_view.dart';
+import 'package:kinoverse/Page/custom_widget/hire_summary_tab_view.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
+import 'package:kinoverse/Page/HireSignUp/hire_chat_screen.dart';
 
 import 'custom_radio_button.dart';
-import 'hire_update_profile.dart';
+
 
 typedef void RatingChangeCallback(double rating);
 
-class StackOver extends StatefulWidget {
+class HireContractScreen extends StatefulWidget {
   @override
-  StackOverState createState() => StackOverState();
+  HireContractScreenState createState() => HireContractScreenState();
 }
 
-class StackOverState extends State<StackOver>
+class HireContractScreenState extends State<HireContractScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  double rating = 3.5;
+
+  int menuIndex = 0;
 
   @override
   void initState() {
@@ -38,26 +48,58 @@ class StackOverState extends State<StackOver>
     return Scaffold(
       backgroundColor: bgColor,
       appBar: appBarWithTabBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  // first tab bar view widget
-                  summaryTabView(),
-                  // second tab bar view widget
-                  paymentTabView(),
-                  transactionsTabView()
-                ],
-              ),
+      body: Column(
+        children: [
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                // first tab bar view widget
+                // HireContractTabView(),
+                //  HirePostTabView(),
+
+                // HireAllTabeView(),
+                // HireYourNotification(),
+                HireContractTabView(),
+                 // HireSearchTabView(),
+                //HireFvFilm_maker
+                //hire_film_maker
+                // HireChatView(),
+                // ChatPage(),
+                // second tab bar view widget
+                ///---
+                // HireSummaryTabView(),
+                getMenuByIndex(),
+                Container(
+                  color: bgColor,
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+
+  getMenuByIndex() {
+    if (menuIndex == 0) {
+      return HireFilmMaker(callBackIndex: changeIndex);
+    } else if (menuIndex == 1) {
+      return CustomRadio(
+        callBackIndex: changeIndex,
+      );
+    } else if (menuIndex == 2) {
+      return HirePayNowView(
+        callBackIndex: changeIndex,
+      );
+    }
+    return getMenuByIndex();
+  }
+
+  changeIndex(int index) {
+    setState(() {
+      menuIndex = index;
+    });
   }
 
   appBarWithTabBar() {
@@ -278,241 +320,238 @@ class StackOverState extends State<StackOver>
     );
   }
 
-  paymentTabView() {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10.0, left: 20, right: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                Container(),
-                Spacer(),
-                Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: txtDescriptionColor)),
-                    height: 30,
-                    width: 63,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 7,
-                        ),
-                        TextStyleRes.textUbuntuStyleFont2(
-                            text: StringRes.Edit,
-                            fontSize: 12,
-                            textColor: txtDescriptionColor),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Image.asset(
-                          App.edit,
-                          color: txtDescriptionColor,
-                          height: 15,
-                          width: 15,
-                        ),
-                        SizedBox(
-                          width: 7,
-                        ),
-                      ],
-                    )),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              color: backContainerColor,
-              height: getDeviceHeight(context) / 3.2,
-              width: getDeviceWidth(context) / 1,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        TextStyleRes.textUbuntuStyleFont2(
-                            text: StringRes.videographer,
-                            fontSize: 12,
-                            textColor: txtColor),
-                        Padding(
-                          padding: EdgeInsets.only(left: 8),
-                          child: CommonWidget.activeButton(),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 8, bottom: 8),
-                      child: TextStyleRes.textUbuntuStyleFont2(
-                          text: StringRes.viewMore,
-                          fontSize: 12,
-                          textColor: txtDescriptionColor),
-                    ),
-                    TextStyleRes.textUbuntuStyleFont2(
-                        text: StringRes.willPaidTo,
-                        fontSize: 12,
-                        textColor: txtColor),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 8.0, top: 8, right: 8),
-                          child: CircleAvatar(
-                            radius: 21,
-                            backgroundColor: btnColor,
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundImage: AssetImage(App.profile),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 8.0, top: 8, right: 8),
-                          child: CircleAvatar(
-                            radius: 21,
-                            backgroundColor: btnColor,
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundImage: AssetImage(App.profile),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 8),
-                      child: TextStyleRes.textUbuntuStyleFont2(
-                          text: StringRes.PaymentMethod,
-                          fontSize: 12,
-                          textColor: txtDescriptionColor),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                            height: 30,
-                            width: 120,
-                            color: txtColor,
-                            child: Center(
-                              child: TextStyleRes.textUbuntuStyleFont2(
-                                  text: StringRes.milestones,
-                                  fontSize: 12,
-                                  textColor: bgColor),
-                            )),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: 30,
-                          width: 120,
-                          child: Image.asset(
-                            App.paypal,
-                            fit: BoxFit.fitWidth,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              color: txtColor,
-              height: getDeviceHeight(context) / 9,
-              width: getDeviceWidth(context) / 1,
-              child: TextFormField(
-                cursorColor: txtColor,
-                maxLines: 8,
-                style: TextStyle(
-                  fontFamily: App.font2,
-                  color: txtDescriptionColor,
-                  fontSize: 12,
-                ),
-                decoration: new InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.only(
-                      left: 10,
-                      bottom: 11,
-                      top: 11,
-                    ),
-                    hintText: StringRes.addReview,
-                    hintStyle: TextStyle(
-                      fontFamily: App.font1,
-                      color: txtDescriptionColor,
-                      fontSize: 12,
-                    )),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                TextStyleRes.textUbuntuStyleFont2(
-                    text: StringRes.PaymentMethod,
-                    fontSize: 12,
-                    textColor: txtDescriptionColor),
-                Spacer(),
-                StarRating(
-                  rating: rating,
-                  onRatingChanged: (rating) =>
-                      setState(() => this.rating = rating),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            CommonWidget.darkStraightContainer(
-                color: backContainerColor,
-                dollarString: "dol" + " 1200",
-                imageName: App.addic,
-                textAfterImage: StringRes.AddBonus),
-            SizedBox(
-              height: 10,
-            ),
-            CommonWidget.darkStraightContainer(
-                extratext: StringRes.asKinoverseSerice,
-                color: backContainerColor,
-                dollarString: "dol" + " 350",
-                imageName: App.charge,
-                textAfterImage: StringRes.Charge),
-            SizedBox(
-              height: 10,
-            ),
-            CommonWidget.darkStraightContainer(
-                color: backContainerColor,
-                dollarString: "dol" + " 1200",
-                imageName: App.total,
-                textAfterImage: StringRes.Total),
-            SizedBox(
-              height: 10,
-            ),
-            CommonWidget.squareButton(
-                textColor: txtColor,
-                containerColor: btnColor,
-                fontSize: 12.0,
-                text: StringRes.PayNow,
-                onTap: () {},
-                width: 200.0,
-                height: 40.0)
-          ],
-        ),
-      ),
-    );
-  }
+// payNowView() {
+//   return SingleChildScrollView(
+//     child: Padding(
+//       padding: const EdgeInsets.only(top: 10.0, left: 20, right: 20),
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.start,
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         children: [
+//           Row(
+//             children: [
+//               Container(),
+//               Spacer(),
+//               Container(
+//                   decoration: BoxDecoration(
+//                       border: Border.all(color: txtDescriptionColor)),
+//                   height: 30,
+//                   width: 63,
+//                   child: Row(
+//                     children: [
+//                       SizedBox(
+//                         width: 7,
+//                       ),
+//                       TextStyleRes.textUbuntuStyleFont2(
+//                           text: StringRes.Edit,
+//                           fontSize: 12,
+//                           textColor: txtDescriptionColor),
+//                       SizedBox(
+//                         width: 8,
+//                       ),
+//                       Image.asset(
+//                         App.edit,
+//                         color: txtDescriptionColor,
+//                         height: 15,
+//                         width: 15,
+//                       ),
+//                       SizedBox(
+//                         width: 7,
+//                       ),
+//                     ],
+//                   )),
+//             ],
+//           ),
+//           SizedBox(
+//             height: 10,
+//           ),
+//           Container(
+//             color: backContainerColor,
+//             height: getDeviceHeight(context) / 3.2,
+//             width: getDeviceWidth(context) / 1,
+//             child: Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Row(
+//                     children: [
+//                       TextStyleRes.textUbuntuStyleFont2(
+//                           text: StringRes.videographer,
+//                           fontSize: 12,
+//                           textColor: txtColor),
+//                       Padding(
+//                         padding: EdgeInsets.only(left: 8),
+//                         child: CommonWidget.activeButton(),
+//                       )
+//                     ],
+//                   ),
+//                   Padding(
+//                     padding: EdgeInsets.only(top: 8, bottom: 8),
+//                     child: TextStyleRes.textUbuntuStyleFont2(
+//                         text: StringRes.viewMore,
+//                         fontSize: 12,
+//                         textColor: txtDescriptionColor),
+//                   ),
+//                   TextStyleRes.textUbuntuStyleFont2(
+//                       text: StringRes.willPaidTo,
+//                       fontSize: 12,
+//                       textColor: txtColor),
+//                   Row(
+//                     children: [
+//                       Padding(
+//                         padding: const EdgeInsets.only(
+//                             bottom: 8.0, top: 8, right: 8),
+//                         child: CircleAvatar(
+//                           radius: 21,
+//                           backgroundColor: btnColor,
+//                           child: CircleAvatar(
+//                             radius: 20,
+//                             backgroundImage: AssetImage(App.profile),
+//                           ),
+//                         ),
+//                       ),
+//                       Padding(
+//                         padding: const EdgeInsets.only(
+//                             bottom: 8.0, top: 8, right: 8),
+//                         child: CircleAvatar(
+//                           radius: 21,
+//                           backgroundColor: btnColor,
+//                           child: CircleAvatar(
+//                             radius: 20,
+//                             backgroundImage: AssetImage(App.profile),
+//                           ),
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                   Padding(
+//                     padding: EdgeInsets.only(bottom: 8),
+//                     child: TextStyleRes.textUbuntuStyleFont2(
+//                         text: StringRes.PaymentMethod,
+//                         fontSize: 12,
+//                         textColor: txtDescriptionColor),
+//                   ),
+//                   Row(
+//                     children: [
+//                       Container(
+//                           height: 30,
+//                           width: 120,
+//                           color: txtColor,
+//                           child: Center(
+//                             child: TextStyleRes.textUbuntuStyleFont2(
+//                                 text: StringRes.milestones,
+//                                 fontSize: 12,
+//                                 textColor: bgColor),
+//                           )),
+//                       SizedBox(
+//                         width: 10,
+//                       ),
+//                       Container(
+//                         height: 30,
+//                         width: 120,
+//                         child: Image.asset(
+//                           App.paypal,
+//                           fit: BoxFit.fitWidth,
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//           SizedBox(
+//             height: 10,
+//           ),
+//           Container(
+//             color: txtColor,
+//             height: getDeviceHeight(context) / 9,
+//             width: getDeviceWidth(context) / 1,
+//             child: TextFormField(
+//               cursorColor: txtColor,
+//               maxLines: 8,
+//               style: TextStyle(
+//                 fontFamily: App.font2,
+//                 color: txtDescriptionColor,
+//                 fontSize: 12,
+//               ),
+//               decoration: new InputDecoration(
+//                   border: InputBorder.none,
+//                   focusedBorder: InputBorder.none,
+//                   enabledBorder: InputBorder.none,
+//                   errorBorder: InputBorder.none,
+//                   disabledBorder: InputBorder.none,
+//                   contentPadding: EdgeInsets.only(
+//                     left: 10,
+//                     bottom: 11,
+//                     top: 11,
+//                   ),
+//                   hintText: StringRes.addReview,
+//                   hintStyle: TextStyle(
+//                     fontFamily: App.font1,
+//                     color: txtDescriptionColor,
+//                     fontSize: 12,
+//                   )),
+//             ),
+//           ),
+//           SizedBox(
+//             height: 10,
+//           ),
+//           Row(
+//             children: [
+//               TextStyleRes.textUbuntuStyleFont2(
+//                   text: StringRes.PaymentMethod,
+//                   fontSize: 12,
+//                   textColor: txtDescriptionColor),
+//               Spacer(),
+//               StarRating(
+//                 rating: rating,
+//                 onRatingChanged: (rating) =>
+//                     setState(() => this.rating = rating),
+//               )
+//             ],
+//           ),
+//           SizedBox(
+//             height: 20,
+//           ),
+//           CommonWidget.darkStraightContainer(
+//               color: backContainerColor,
+//               dollarString: "dol" + " 1200",
+//               imageName: App.addic,
+//               textAfterImage: StringRes.AddBonus),
+//           SizedBox(
+//             height: 10,
+//           ),
+//           CommonWidget.darkStraightContainer(
+//               extratext: StringRes.asKinoverseSerice,
+//               color: backContainerColor,
+//               dollarString: "dol" + " 350",
+//               imageName: App.charge,
+//               textAfterImage: StringRes.Charge),
+//           SizedBox(
+//             height: 10,
+//           ),
+//           CommonWidget.darkStraightContainer(
+//               color: backContainerColor,
+//               dollarString: "dol" + " 1200",
+//               imageName: App.total,
+//               textAfterImage: StringRes.Total),
+//           SizedBox(
+//             height: 10,
+//           ),
+//           CommonWidget.squareButton(
+//               textColor: txtColor,
+//               containerColor: btnColor,
+//               fontSize: 12.0,
+//               text: StringRes.PayNow,
+//               onTap: () {},
+//               width: 200.0,
+//               height: 40.0)
+//         ],
+//       ),
+//     ),
+//   );
+// }
 
-  transactionsTabView() {
-    return CustomRadio();
-  }
 }

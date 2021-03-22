@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/HireSignUp/hire_contract.dart';
+import 'package:kinoverse/Page/dashboard_page/dashboard_page.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
@@ -17,7 +17,7 @@ class _HireUpdateProfileState extends State<HireUpdateProfile> {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController vatIdController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-int _value=1;
+  int _value = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,15 +40,16 @@ int _value=1;
             containerColor: btnColor,
             textColor: txtColor,
             onTap: () {
-              CommonRoutePage.goToScreen(context, HireContractScreen());
+              CommonRoutePage.goToScreen(context, DashBoardPage(0));
             },
           )
         ],
       )),
     );
   }
-  companyContactView(){
-    return    Padding(
+
+  companyContactView() {
+    return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: Container(
         width: getDeviceWidth(context),
@@ -63,9 +64,7 @@ int _value=1;
               height: 10,
             ),
             TextStyleRes.textUbuntuStyleFont2(
-                textColor: txtColor,
-                text: StringRes.owner,
-                fontSize: 10.0),
+                textColor: txtColor, text: StringRes.owner, fontSize: 10.0),
             SizedBox(
               height: 5,
             ),
@@ -91,9 +90,7 @@ int _value=1;
               height: 5,
             ),
             TextStyleRes.textUbuntuStyleFont2(
-                textColor: txtColor,
-                text: StringRes.vatId,
-                fontSize: 10.0),
+                textColor: txtColor, text: StringRes.vatId, fontSize: 10.0),
             SizedBox(
               height: 5,
             ),
@@ -112,18 +109,13 @@ int _value=1;
               height: 5,
             ),
             TextStyleRes.textUbuntuStyleFont2(
-                textColor:txtColor,
-                text: StringRes.timezone,
-                fontSize: 10.0),
-
+                textColor: txtColor, text: StringRes.timezone, fontSize: 10.0),
             categoryDropDown(),
             SizedBox(
               height: 5,
             ),
             TextStyleRes.textUbuntuStyleFont2(
-                textColor: txtColor,
-                text: StringRes.address,
-                fontSize: 10.0),
+                textColor: txtColor, text: StringRes.address, fontSize: 10.0),
             SizedBox(
               height: 5,
             ),
@@ -134,12 +126,12 @@ int _value=1;
             SizedBox(
               height: 10,
             ),
-
           ],
         ),
       ),
     );
   }
+
   categoryDropDown() {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
@@ -153,7 +145,6 @@ int _value=1;
         child: Theme(
           data: ThemeData(canvasColor: bgColor),
           child: DropdownButton(
-
               underline: SizedBox(),
               hint: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
@@ -163,7 +154,9 @@ int _value=1;
               value: _value,
               items: [
                 DropdownMenuItem(
-                  child: Text("UTC+07:00 Omsk, Novosibirsk",),
+                  child: Text(
+                    "UTC+07:00 Omsk, Novosibirsk",
+                  ),
                   value: 1,
                 ),
                 DropdownMenuItem(
@@ -182,6 +175,7 @@ int _value=1;
       ),
     );
   }
+
   appbar(context) {
     return PreferredSize(
       preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.11),
@@ -197,7 +191,7 @@ int _value=1;
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                     },
                     child: Icon(

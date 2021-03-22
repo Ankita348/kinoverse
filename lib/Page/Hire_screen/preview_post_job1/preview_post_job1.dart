@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/preview_post_job_2/preview_post_job_2.dart';
+import 'package:kinoverse/Page/Hire_screen/preview_post_job_2/preview_post_job_2.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_route.dart';

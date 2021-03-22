@@ -560,6 +560,94 @@ class CommonWidget {
     );
   }
 
+  static appBarJobWithTabBar(context, controller, drawer()) {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.14),
+      child: Container(
+        decoration: BoxDecoration(
+          color: btnColor,
+        ),
+        width: getDeviceWidth(context),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 35.0, left: 20, right: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        drawer();
+                      },
+                      child: Image.asset(
+                        App.drawerIcon,
+                        height: 18,
+                        width: 18,
+                      ),
+                    ),
+                    Text(
+                      StringRes.Contract,
+                      style:
+                          TextStyle(color: colorWhite, fontFamily: App.font1),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return ToggleButton();
+                            });
+                      },
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundImage: NetworkImage(
+                            "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg?size=626&ext=jpg"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 36.4,
+                width: getDeviceWidth(context) / 1.1,
+                decoration: BoxDecoration(
+                  color: btnColor,
+                ),
+                child: TabBar(
+                  controller: controller,
+                  // give the indicator a decoration (color and border radius)
+                  indicator: BoxDecoration(
+                      color: bgColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(5),
+                        topRight: Radius.circular(5),
+                      )),
+                  labelColor: txtColor,
+                  labelStyle: TextStyle(fontSize: 12, fontFamily: App.font2),
+                  unselectedLabelColor: txtDescriptionColor,
+                  tabs: [
+                    Tab(
+                      text: "All",
+                    ),
+                    Tab(
+                      text:"Posting"
+                    ),
+                    Tab(
+                      text: "Contract",
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   static backWordButton({setState(), toggle}) {
     return GestureDetector(
       onTap: () {

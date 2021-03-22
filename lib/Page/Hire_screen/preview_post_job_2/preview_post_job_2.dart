@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/dashboard_page/dashboard_page.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_route.dart';
@@ -36,7 +37,7 @@ class _PreviewPostJob2State extends State<PreviewPostJob2> {
                       child: GestureDetector(
                         onTap: () {
                           CommonRoutePage.goToScreen(
-                              context, PreviewPostJob2());
+                              context, DashBoardPage(12));
                         },
                         child: Container(
                           decoration: BoxDecoration(

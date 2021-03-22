@@ -149,7 +149,7 @@ class _HireSummaryTabViewState extends State<HireSummaryTabView> {
                 fontSize: 12.0,
                 text: StringRes.PayNow,
                 onTap: () {},
-                width: 200.0,
+                width: 100.0,
                 height: 40.0)
           ],
         ),

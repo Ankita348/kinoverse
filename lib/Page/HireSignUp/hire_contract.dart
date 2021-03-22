@@ -60,7 +60,7 @@ class HireContractScreenState extends State<HireContractScreen>
 
                 // HireAllTabeView(),
                 // HireYourNotification(),
-                HireContractTabView(),
+                // HireContractTabView(),
                  // HireSearchTabView(),
                 //HireFvFilm_maker
                 //hire_film_maker
@@ -68,7 +68,7 @@ class HireContractScreenState extends State<HireContractScreen>
                 // ChatPage(),
                 // second tab bar view widget
                 ///---
-                // HireSummaryTabView(),
+                HireSummaryTabView(),
                 getMenuByIndex(),
                 Container(
                   color: bgColor,

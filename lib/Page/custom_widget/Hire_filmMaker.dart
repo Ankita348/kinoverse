@@ -181,7 +181,7 @@ class _HireFilmMakerState extends State<HireFilmMaker> {
                         CommonWidget.squareWithIconButton(
                             textColor: txtColor,
                             containerColor: btnColor,
-                            fontSize: 12.0,
+                            fontSize: 10.0,
                             borderColor: btnColor,
                             sizeboxWidth: 8.0,
                             text: StringRes.AddtoPayment,

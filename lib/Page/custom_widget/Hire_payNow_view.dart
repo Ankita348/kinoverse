@@ -34,8 +34,8 @@ class _HirePayNowViewState extends State<HirePayNowView> {
                   Container(
                       decoration: BoxDecoration(
                           border: Border.all(color: txtDescriptionColor)),
-                      height: 30,
-                      width: 63,
+                      height: 25,
+                      width: 61,
                       child: Row(
                         children: [
                           SizedBox(
@@ -62,7 +62,7 @@ class _HirePayNowViewState extends State<HirePayNowView> {
                 ],
               ),
               SizedBox(
-                height: 10,
+                height: 8,
               ),
               Container(
                 color: backContainerColor,
@@ -80,7 +80,7 @@ class _HirePayNowViewState extends State<HirePayNowView> {
                               fontSize: 12,
                               textColor: txtColor),
                           Padding(
-                            padding: EdgeInsets.only(left: 8),
+                            padding: EdgeInsets.only(left: 25),
                             child: CommonWidget.activeButton(),
                           )
                         ],
@@ -161,7 +161,7 @@ class _HirePayNowViewState extends State<HirePayNowView> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height:8,
               ),
               Container(
                 color: txtColor,
@@ -195,7 +195,7 @@ class _HirePayNowViewState extends State<HirePayNowView> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height:8,
               ),
               Row(
                 children: [
@@ -212,32 +212,32 @@ class _HirePayNowViewState extends State<HirePayNowView> {
                 ],
               ),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               CommonWidget.darkStraightContainer(
                   color: backContainerColor,
-                  dollarString: "dol" + " 1200",
+                  dollarString: "\$1200",
                   imageName: App.addic,
                   textAfterImage: StringRes.AddBonus),
               SizedBox(
-                height: 10,
+                height: 6,
               ),
               CommonWidget.darkStraightContainer(
                   extratext: StringRes.asKinoverseSerice,
                   color: backContainerColor,
-                  dollarString: "dol" + " 350",
+                  dollarString:  "\$350",
                   imageName: App.charge,
                   textAfterImage: StringRes.Charge),
               SizedBox(
-                height: 10,
+                height: 6,
               ),
               CommonWidget.darkStraightContainer(
                   color: backContainerColor,
-                  dollarString: "dol" + " 1200",
+                  dollarString:  "\$1200",
                   imageName: App.total,
                   textAfterImage: StringRes.Total),
               SizedBox(
-                height: 10,
+                height: 6,
               ),
               CommonWidget.squareButton(
                   textColor: txtColor,
@@ -245,8 +245,11 @@ class _HirePayNowViewState extends State<HirePayNowView> {
                   fontSize: 12.0,
                   text: StringRes.PayNow,
                   onTap: () {},
-                  width: 200.0,
-                  height: 40.0)
+                  width: 100.0,
+                  height: 35.0),
+              SizedBox(
+                height: 10,
+              ),
             ],
           ),
         ),

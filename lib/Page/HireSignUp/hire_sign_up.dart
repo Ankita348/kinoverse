@@ -186,6 +186,7 @@ int select=0;
                         child: CheckboxListTile(
                           title: TextStyleRes.textUbuntuStyleFont2(
                             fontSize: 12,
+                             maxLine: 3,
                             text: StringRes.sendMeUsefulEmail,
                             textColor: txtColor
                           ),
@@ -206,6 +207,7 @@ int select=0;
                         child: CheckboxListTile(
                           title: TextStyleRes.textUbuntuStyleFont2(
                             fontSize: 12,
+                              maxLine: 3,
                             text: StringRes.privacyPolicyAgreement,
                             textColor: txtColor
                           ),

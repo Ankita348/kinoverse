@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kinoverse/aSA.dart';
 import 'package:kinoverse/common/StringRes.dart';
 
 import '../app.dart';
 import 'TextStyleRes.dart';
 
 class CommonWidget {
+  static int value = 1;
+  static bool onOff = true;
+
   static squareButton(
       {containerColor, height, width, text, textColor, fontSize, onTap}) {
     return GestureDetector(
@@ -18,6 +22,333 @@ class CommonWidget {
             child: TextStyleRes.textStyleFont1(
                 textColor: textColor, fontSize: fontSize, text: text),
           )),
+    );
+  }
+
+  static drawer(context, {value}) {
+    return Container(
+      color: btnColor,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 20.0, bottom: 30, left: 20, right: 20),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      App.closeIcon,
+                      height: 18,
+                      width: 18,
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  TextStyleRes.textUbuntuStyleFont2(
+                      fontSize: 12,
+                      decoration: TextDecoration.underline,
+                      text: "Close",
+                      fontWeight: FontWeight.bold,
+                      textColor: colorWhite),
+                ],
+              ),
+            ),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      value = 1;
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Container(
+                    color: value == 1 ? backContainerColor : btnColor,
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10, left: 20, right: 20),
+                    child: GestureDetector(
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            App.statesIcon,
+                            height: 18,
+                            width: 18,
+                          ),
+                          SizedBox(width: 10),
+                          TextStyleRes.textUbuntuStyleFont2(
+                              fontSize: 12,
+                              text: "My Stats",
+                              fontWeight: FontWeight.bold,
+                              textColor: colorWhite),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      value = 2;
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Container(
+                    color: value == 2 ? backContainerColor : btnColor,
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10, left: 20, right: 20),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          App.reportIcon,
+                          height: 18,
+                          width: 18,
+                        ),
+                        SizedBox(width: 10),
+                        TextStyleRes.textUbuntuStyleFont2(
+                            fontSize: 12,
+                            text: "Report",
+                            fontWeight: FontWeight.bold,
+                            textColor: colorWhite),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      value = 3;
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Container(
+                    color: value == 3 ? backContainerColor : btnColor,
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10, left: 20, right: 20),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          App.lawIcon,
+                          height: 18,
+                          width: 18,
+                        ),
+                        SizedBox(width: 10),
+                        TextStyleRes.textUbuntuStyleFont2(
+                            fontSize: 12,
+                            text: "Disputes",
+                            fontWeight: FontWeight.bold,
+                            textColor: colorWhite),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 10),
+            Container(
+              color: Color(0xff7E0000),
+              child: Column(
+                children: [
+                  StatefulBuilder(
+                    builder: (context, setState) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            value = 4;
+                            Navigator.pop(context);
+                          });
+                        },
+                        child: Container(
+                          color: value == 4
+                              ? backContainerColor
+                              : Color(0xff7E0000),
+                          padding: const EdgeInsets.only(
+                              top: 10.0, bottom: 10, left: 20, right: 20),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                App.covidIcon,
+                                height: 18,
+                                width: 18,
+                              ),
+                              SizedBox(width: 10),
+                              TextStyleRes.textUbuntuStyleFont2(
+                                  fontSize: 12,
+                                  text: "Covid-19 Resources",
+                                  fontWeight: FontWeight.bold,
+                                  textColor: colorWhite),
+                              Spacer(),
+                              Image.asset(App.linkIcon, height: 18, width: 18)
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  StatefulBuilder(
+                    builder: (context, setState) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            value = 5;
+                            Navigator.pop(context);
+                          });
+                        },
+                        child: Container(
+                          color: value == 5
+                              ? backContainerColor
+                              : Color(0xff7E0000),
+                          padding: const EdgeInsets.only(
+                              top: 10.0, bottom: 10, left: 20, right: 20),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                App.communityIcon,
+                                height: 18,
+                                width: 18,
+                              ),
+                              SizedBox(width: 10),
+                              TextStyleRes.textUbuntuStyleFont2(
+                                  fontSize: 12,
+                                  text: "Community & Forums",
+                                  fontWeight: FontWeight.bold,
+                                  textColor: colorWhite),
+                              Spacer(),
+                              Image.asset(App.linkIcon, height: 18, width: 18)
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      value = 6;
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Container(
+                    color: value == 6 ? backContainerColor : btnColor,
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10, left: 20, right: 20),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          App.helpIcon,
+                          height: 18,
+                          width: 18,
+                        ),
+                        SizedBox(width: 10),
+                        TextStyleRes.textUbuntuStyleFont2(
+                            fontSize: 12,
+                            text: "Help",
+                            fontWeight: FontWeight.bold,
+                            textColor: colorWhite),
+                        Spacer(),
+                        Image.asset(App.linkIcon, height: 18, width: 18)
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      value = 7;
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Container(
+                    color: value == 7 ? backContainerColor : btnColor,
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10, left: 20, right: 20),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          App.supportIcon,
+                          height: 18,
+                          width: 18,
+                        ),
+                        SizedBox(width: 10),
+                        TextStyleRes.textUbuntuStyleFont2(
+                            fontSize: 12,
+                            text: "Support",
+                            fontWeight: FontWeight.bold,
+                            textColor: colorWhite),
+                        Spacer(),
+                        Image.asset(App.linkIcon, height: 18, width: 18),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      value = 8;
+                      Navigator.pop(context);
+                    });
+                  },
+                  child: Container(
+                    color: value == 8 ? backContainerColor : btnColor,
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10, left: 20, right: 20),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          App.settingIcon,
+                          height: 18,
+                          width: 18,
+                        ),
+                        SizedBox(width: 10),
+                        TextStyleRes.textUbuntuStyleFont2(
+                            fontSize: 12,
+                            text: "Settings",
+                            fontWeight: FontWeight.bold,
+                            textColor: colorWhite),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Image.asset(
+                App.logo,
+                height: 140,
+                width: 140,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -61,12 +392,6 @@ class CommonWidget {
       child: Container(
         decoration: BoxDecoration(
           color: toggle != 0 ? btnColor : bgColor,
-          boxShadow: [
-            BoxShadow(
-              color: toggle != 0 ? Colors.black : btnColor,
-              blurRadius: toggle != 0 ? 3 : 0,
-            ),
-          ],
           border: Border.all(color: btnColor),
         ),
         child: Container(
@@ -76,6 +401,72 @@ class CommonWidget {
               text: "Next",
               fontWeight: FontWeight.bold,
               textColor: colorWhite),
+        ),
+      ),
+    );
+  }
+
+  static hireAppbar(context, text, drawer()) {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.11),
+      child: Container(
+        decoration: BoxDecoration(
+          color: btnColor,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              blurRadius: 2.0,
+            ),
+          ],
+        ),
+        width: getDeviceWidth(context),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 35.0, left: 20, right: 20),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      drawer();
+                    },
+                    child: Image.asset(
+                      App.drawerIcon,
+                      height: 18,
+                      width: 18,
+                    ),
+                  ),
+                  Text(
+                    "Jobs",
+                    style: TextStyle(color: colorWhite, fontFamily: App.font1),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ToggleButton();
+                          });
+                    },
+                    child: CircleAvatar(
+                      radius: 12,
+                      backgroundImage: NetworkImage(
+                          "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg?size=626&ext=jpg"),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0, bottom: 4),
+                child: Text(
+                  text,
+                  style: TextStyle(
+                      color: colorWhite, fontFamily: App.font2, fontSize: 12),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

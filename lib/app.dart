@@ -42,6 +42,22 @@ class App {
   static const Mastercard = '$root' + 'Mastercard-logo 1.png';
   static const Payoneer = '$root' + 'Payoneer-Logo 1.png';
   static const cil_bank = '$root' + 'cil_bank.png';
+  static const fixedPrice = '$root' + 'fixedprice.png';
+  static const payByHour = '$root' + 'paybyhour.png';
+  static const addPeopleIcon = '$root' + 'addpeopleicon.png';
+  static const closeIcon = '$root' + 'closeIcon.png';
+  static const communityIcon = '$root' + 'communityIcon.png';
+  static const covidIcon = '$root' + 'covidIcon.png';
+  static const helpIcon = '$root' + 'helpIcon.png';
+  static const lawIcon = '$root' + 'disputeIcon.png';
+  static const reportIcon = '$root' + 'reportIcon.png';
+  static const settingIcon = '$root' + 'settingIcon.png';
+  static const statesIcon = '$root' + 'statesIcon.png';
+  static const supportIcon = '$root' + 'supportIcon.png';
+  static const switchIcon = '$root' + 'switchIcon.png';
+  static const linkIcon = '$root' + 'linkIcon.png';
+  static const logoutIcon = '$root' + 'logoutIcon.png';
+  static const profileIcon = '$root' + 'profileIcon.png';
 
   static Route createRoute({Widget page}) {
     return PageRouteBuilder(

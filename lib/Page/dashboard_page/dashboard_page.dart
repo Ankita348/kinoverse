@@ -4,7 +4,10 @@ import 'package:kinoverse/Page/post_new_job_2/post_new_job_2.dart';
 import 'package:kinoverse/Page/post_new_job_3/post_new_job_3.dart';
 import 'package:kinoverse/Page/post_new_job_4/post_new_job_4.dart';
 import 'package:kinoverse/Page/post_new_job_5/post_new_job5.dart';
+import 'package:kinoverse/Page/post_new_job_6/post_new_job_6.dart';
+import 'package:kinoverse/Page/post_new_job_7/post_new_job_7.dart';
 import 'package:kinoverse/app.dart';
+import 'package:kinoverse/common/common_widget.dart';
 
 class DashBoardPage extends StatefulWidget {
   @override
@@ -18,58 +21,19 @@ class DashBoardPage extends StatefulWidget {
 }
 
 class DashBoardPageState extends State<DashBoardPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     print("runtimeType -> " + runtimeType.toString());
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.11),
-        child: Container(
-          decoration: BoxDecoration(color: btnColor, boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              blurRadius: 2.0,
-            ),
-          ]),
-          width: getDeviceWidth(context),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 35.0, left: 20, right: 20),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      App.drawerIcon,
-                      height: 18,
-                      width: 18,
-                    ),
-                    Text(
-                      "Jobs",
-                      style:
-                          TextStyle(color: colorWhite, fontFamily: App.font1),
-                    ),
-                    CircleAvatar(
-                      radius: 12,
-                      backgroundImage: NetworkImage(
-                          "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg?size=626&ext=jpg"),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15.0, bottom: 4),
-                  child: Text(
-                    "Post Job",
-                    style: TextStyle(color: colorWhite, fontFamily: App.font1),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      key: _scaffoldKey,
+      appBar: CommonWidget.hireAppbar(context, "Post Job", () {
+        _scaffoldKey.currentState.openDrawer();
+      }),
       backgroundColor: bgColor,
+      drawer: Drawer(child: CommonWidget.drawer(context)),
       bottomNavigationBar: bottomNavigationBar(context, changeIndex),
       body: Container(
         child: getMenuByIndex,
@@ -90,6 +54,10 @@ class DashBoardPageState extends State<DashBoardPage> {
       return PostNewJob4(changeIndex);
     } else if (widget.menuIndex == 103) {
       return PostNewJob5(changeIndex);
+    } else if (widget.menuIndex == 104) {
+      return PostNewJob6(changeIndex);
+    } else if (widget.menuIndex == 105) {
+      return PostNewJob7(changeIndex);
     } else if (widget.menuIndex == 2) {
     } else if (widget.menuIndex == 3) {
     } else if (widget.menuIndex == 4) {
@@ -178,7 +146,9 @@ class DashBoardPageState extends State<DashBoardPage> {
                                       widget.menuIndex == 100 ||
                                       widget.menuIndex == 101 ||
                                       widget.menuIndex == 102 ||
-                                      widget.menuIndex == 103
+                                      widget.menuIndex == 103 ||
+                                      widget.menuIndex == 104 ||
+                                      widget.menuIndex == 105
                                   ? colorWhite
                                   : btnColor,
                             ),
@@ -192,7 +162,9 @@ class DashBoardPageState extends State<DashBoardPage> {
                                       widget.menuIndex == 100 ||
                                       widget.menuIndex == 101 ||
                                       widget.menuIndex == 102 ||
-                                      widget.menuIndex == 103
+                                      widget.menuIndex == 103 ||
+                                      widget.menuIndex == 104 ||
+                                      widget.menuIndex == 105
                                   ? colorWhite
                                   : btnColor,
                               fontFamily: App.font2,

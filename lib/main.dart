@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kinoverse/Page/landing_page/landing_page.dart';
+
 import 'app.dart';
 
 void main() {
   runApp(MyApp());
 }
-
 
 class MyApp extends StatefulWidget {
   @override
@@ -21,8 +21,9 @@ class _MyAppState extends State<MyApp> {
       },
       child: MaterialApp(
         theme: ThemeData(
-          fontFamily: App.font1,
-        ),
+            fontFamily: App.font1,
+            primaryColor: bgColor,
+            accentColor: btnBorderWhite),
         home: LandingPage(),
         debugShowCheckedModeBanner: false,
       ),

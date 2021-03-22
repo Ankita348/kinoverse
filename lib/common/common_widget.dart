@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kinoverse/aSA.dart';
 import 'package:kinoverse/common/StringRes.dart';
+
+import 'file:///D:/kinoverse/lib/Page/dashboard_page/profile_pop_up.dart';
 
 import '../app.dart';
 import 'TextStyleRes.dart';

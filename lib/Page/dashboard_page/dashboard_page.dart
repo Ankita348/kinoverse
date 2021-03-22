@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/HireSignUp/hire_your_notification.dart';
+import 'package:kinoverse/Page/custom_widget/hire_all_tabe_view.dart';
 import 'package:kinoverse/Page/post_new_job_1/post_new_job_1.dart';
 import 'package:kinoverse/Page/post_new_job_2/post_new_job_2.dart';
 import 'package:kinoverse/Page/post_new_job_3/post_new_job_3.dart';
@@ -29,7 +31,9 @@ class DashBoardPageState extends State<DashBoardPage> {
 
     return Scaffold(
       key: _scaffoldKey,
-      appBar: CommonWidget.hireAppbar(context, "Post Job", () {
+      appBar: CommonWidget.hireAppbar(
+          context, widget.menuIndex == 3 ? "Your Notifications" : "Post Job",
+          () {
         _scaffoldKey.currentState.openDrawer();
       }),
       backgroundColor: bgColor,
@@ -44,6 +48,7 @@ class DashBoardPageState extends State<DashBoardPage> {
   Widget get getMenuByIndex {
     print("menuIndex -> " + widget.menuIndex.toString());
     if (widget.menuIndex == 0) {
+      return HireAllTabeView();
     } else if (widget.menuIndex == 1) {
       return PostNewJob1(changeIndex);
     } else if (widget.menuIndex == 100) {
@@ -60,6 +65,7 @@ class DashBoardPageState extends State<DashBoardPage> {
       return PostNewJob7(changeIndex);
     } else if (widget.menuIndex == 2) {
     } else if (widget.menuIndex == 3) {
+      return HireYourNotification();
     } else if (widget.menuIndex == 4) {
     } else if (widget.menuIndex == 6) {
     } else if (widget.menuIndex == 7) {}

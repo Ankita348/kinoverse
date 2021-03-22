@@ -524,7 +524,10 @@ class CommonWidget {
                   ),
                   Text(
                     "Jobs",
-                    style: TextStyle(color: colorWhite, fontFamily: App.font1),
+                    style: TextStyle(
+                        color: colorWhite,
+                        fontFamily: App.font1,
+                        fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -547,7 +550,10 @@ class CommonWidget {
                 child: Text(
                   text,
                   style: TextStyle(
-                      color: colorWhite, fontFamily: App.font2, fontSize: 12),
+                      color: colorWhite,
+                      fontFamily: App.font2,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/HireSignUp/star_rate.dart';
+import 'package:kinoverse/Page/Hire_screen/star_rate.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';

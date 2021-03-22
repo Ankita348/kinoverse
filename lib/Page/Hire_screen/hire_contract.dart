@@ -1,22 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/HireSignUp/hire_your_notification.dart';
-import 'package:kinoverse/Page/HireSignUp/star_rate.dart';
-import 'package:kinoverse/Page/custom_widget/Hire_contract_tab_view.dart';
 import 'package:kinoverse/Page/custom_widget/Hire_filmMaker.dart';
 import 'package:kinoverse/Page/custom_widget/Hire_payNow_view.dart';
-import 'package:kinoverse/Page/custom_widget/Hire_posting_tab_view.dart';
-import 'package:kinoverse/Page/custom_widget/hire_all_tabe_view.dart';
-import 'package:kinoverse/Page/custom_widget/hire_search_tab_view.dart';
 import 'package:kinoverse/Page/custom_widget/hire_summary_tab_view.dart';
+import 'package:kinoverse/Page/dashboard_page/profile_pop_up.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
-import 'package:kinoverse/Page/HireSignUp/hire_chat_screen.dart';
 
 import 'custom_radio_button.dart';
-
 
 typedef void RatingChangeCallback(double rating);
 
@@ -28,7 +20,7 @@ class HireContractScreen extends StatefulWidget {
 class HireContractScreenState extends State<HireContractScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int menuIndex = 0;
 
   @override
@@ -46,6 +38,8 @@ class HireContractScreenState extends State<HireContractScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer(child: CommonWidget.drawer(context)),
       backgroundColor: bgColor,
       appBar: appBarWithTabBar(),
       body: Column(
@@ -60,15 +54,15 @@ class HireContractScreenState extends State<HireContractScreen>
 
                 // HireAllTabeView(),
                 // HireYourNotification(),
-                HireContractTabView(),
-                 // HireSearchTabView(),
+                // HireContractTabView(),
+                // HireSearchTabView(),
                 //HireFvFilm_maker
                 //hire_film_maker
                 // HireChatView(),
                 // ChatPage(),
                 // second tab bar view widget
                 ///---
-                // HireSummaryTabView(),
+                HireSummaryTabView(),
                 getMenuByIndex(),
                 Container(
                   color: bgColor,
@@ -120,20 +114,34 @@ class HireContractScreenState extends State<HireContractScreen>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset(
-                      App.drawerIcon,
-                      height: 18,
-                      width: 18,
+                    GestureDetector(
+                      onTap: () {
+                        _scaffoldKey.currentState.openDrawer();
+                      },
+                      child: Image.asset(
+                        App.drawerIcon,
+                        height: 18,
+                        width: 18,
+                      ),
                     ),
                     Text(
                       StringRes.Contract,
                       style:
                           TextStyle(color: colorWhite, fontFamily: App.font1),
                     ),
-                    CircleAvatar(
-                      radius: 12,
-                      backgroundImage: NetworkImage(
-                          "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg?size=626&ext=jpg"),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return ToggleButton();
+                            });
+                      },
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundImage: NetworkImage(
+                            "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg?size=626&ext=jpg"),
+                      ),
                     ),
                   ],
                 ),
@@ -175,6 +183,79 @@ class HireContractScreenState extends State<HireContractScreen>
       ),
     );
   }
+  // appBarWithTabBar() {
+  //   return PreferredSize(
+  //     preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.14),
+  //     child: Container(
+  //       decoration: BoxDecoration(
+  //         color: btnColor,
+  //       ),
+  //       width: getDeviceWidth(context),
+  //       child: Padding(
+  //         padding: const EdgeInsets.only(top: 35.0, left: 20, right: 20),
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.end,
+  //           children: [
+  //             Padding(
+  //               padding: const EdgeInsets.only(bottom: 16.0),
+  //               child: Row(
+  //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                 children: [
+  //                   Image.asset(
+  //                     App.drawerIcon,
+  //                     height: 18,
+  //                     width: 18,
+  //                   ),
+  //                   Text(
+  //                     StringRes.Contract,
+  //                     style:
+  //                         TextStyle(color: colorWhite, fontFamily: App.font1),
+  //                   ),
+  //                   CircleAvatar(
+  //                     radius: 12,
+  //                     backgroundImage: NetworkImage(
+  //                         "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg?size=626&ext=jpg"),
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //             Container(
+  //               height: 36.4,
+  //               width: getDeviceWidth(context) / 1.1,
+  //               decoration: BoxDecoration(
+  //                 color: btnColor,
+  //               ),
+  //               child: TabBar(
+  //                 controller: _tabController,
+  //                 // give the indicator a decoration (color and border radius)
+  //                 indicator: BoxDecoration(
+  //                     color: bgColor,
+  //                     borderRadius: BorderRadius.only(
+  //                       topLeft: Radius.circular(5),
+  //                       topRight: Radius.circular(5),
+  //                     )),
+  //                 labelColor: txtColor,
+  //                 labelStyle: TextStyle(fontSize: 12, fontFamily: App.font2),
+  //                 unselectedLabelColor: txtDescriptionColor,
+  //                 tabs: [
+  //                   Tab(
+  //                     text: StringRes.summary,
+  //                   ),
+  //                   Tab(
+  //                     text: StringRes.Payment,
+  //                   ),
+  //                   Tab(
+  //                     text: StringRes.Transactions,
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   summaryTabView() {
     return Padding(

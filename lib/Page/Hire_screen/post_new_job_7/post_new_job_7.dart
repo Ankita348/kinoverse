@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/preview_post_job1/preview_post_job1.dart';
+import 'package:kinoverse/Page/Hire_screen/preview_post_job1/preview_post_job1.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_route.dart';
@@ -35,12 +35,12 @@ class _PostNewJob7State extends State<PostNewJob7> {
                   widget.callback(103);
                 },
                 toggle: toggle),
-            CommonWidget.nextButton(() {
+            CommonWidget.forwordButton(() {
               setState(() {
                 toggle = 1;
               });
               CommonRoutePage.goToScreen(context, PreviewPostJob1());
-            }, toggle)
+            }, toggle, "Preview Post Job")
           ],
         ),
       ),

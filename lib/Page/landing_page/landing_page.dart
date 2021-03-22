@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:kinoverse/Page/HireSignUp/hire_sign_up.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/common_route.dart';
 import 'package:kinoverse/model/slider_item.dart';
 
 import 'landing_page_model.dart';
-
 
 class LandingPage extends StatefulWidget {
   @override

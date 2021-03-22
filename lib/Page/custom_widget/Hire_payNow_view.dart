@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/HireSignUp/star_rate.dart';
+import 'package:kinoverse/Page/Hire_screen/star_rate.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
+
 class HirePayNowView extends StatefulWidget {
- final  Function callBackIndex;
+  final Function callBackIndex;
 
   const HirePayNowView({Key key, this.callBackIndex}) : super(key: key);
   @override
@@ -17,8 +18,8 @@ class _HirePayNowViewState extends State<HirePayNowView> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: (){
-      return widget. callBackIndex(1);
+      onWillPop: () {
+        return widget.callBackIndex(1);
       },
       child: SingleChildScrollView(
         child: Padding(

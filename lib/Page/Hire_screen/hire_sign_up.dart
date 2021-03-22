@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/HireSignUp/hire_update_profile.dart';
-import 'package:kinoverse/Page/dashboard_page/dashboard_page.dart';
+import 'package:kinoverse/Page/Hire_screen/hire_update_profile.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
@@ -15,7 +14,7 @@ class HireSignUp extends StatefulWidget {
 class _HireSignUpState extends State<HireSignUp> {
   bool check1 = false;
   bool check2 = false;
-int select=0;
+  int select = 0;
   @override
   Widget build(BuildContext context) {
     print("runtimeType -> " + runtimeType.toString());
@@ -30,9 +29,7 @@ int select=0;
               children: <Widget>[
                 ///go to dashboard scren
                 GestureDetector(
-                  onTap: () {
-                    CommonRoutePage.goToScreen(context, DashBoardPage(0));
-                  },
+                  onTap: () {},
                   child: Center(
                     child: Image.asset(
                       App.logo,
@@ -64,7 +61,8 @@ int select=0;
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 40.0, right: 2),
+                            padding:
+                                const EdgeInsets.only(left: 40.0, right: 2),
                             child: CircleAvatar(
                               backgroundColor: btnBorderWhite,
                               radius: 20,
@@ -143,7 +141,9 @@ int select=0;
                         height: 15,
                       ),
                       TextStyleRes.textUbuntuStyleFont2(
-                          text: StringRes.iWantTo, fontSize: 12,textColor: txtColor),
+                          text: StringRes.iWantTo,
+                          fontSize: 12,
+                          textColor: txtColor),
                       SizedBox(
                         height: 15,
                       ),
@@ -151,28 +151,28 @@ int select=0;
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CommonWidget.squareButton(
-                            containerColor:select!=0?txtColor :btnColor,
+                            containerColor: select != 0 ? txtColor : btnColor,
                             fontSize: 12.0,
                             height: 40.0,
                             width: 100.0,
                             text: StringRes.hire,
-                            textColor:select!=0?colorBlack :txtColor,
+                            textColor: select != 0 ? colorBlack : txtColor,
                             onTap: () {
                               setState(() {
-                                select=0;
+                                select = 0;
                               });
                             },
                           ),
                           CommonWidget.squareButton(
-                            containerColor:select!=1?txtColor :btnColor,
+                            containerColor: select != 1 ? txtColor : btnColor,
                             fontSize: 12.0,
                             height: 40.0,
                             width: 100.0,
                             text: StringRes.work,
-                            textColor:select!=1?colorBlack :txtColor,
+                            textColor: select != 1 ? colorBlack : txtColor,
                             onTap: () {
                               setState(() {
-                                select=1;
+                                select = 1;
                               });
                             },
                           ),
@@ -185,10 +185,9 @@ int select=0;
                         width: 300,
                         child: CheckboxListTile(
                           title: TextStyleRes.textUbuntuStyleFont2(
-                            fontSize: 12,
-                            text: StringRes.sendMeUsefulEmail,
-                            textColor: txtColor
-                          ),
+                              fontSize: 12,
+                              text: StringRes.sendMeUsefulEmail,
+                              textColor: txtColor),
                           value: check1,
                           onChanged: (newValue) {
                             setState(() {
@@ -205,15 +204,14 @@ int select=0;
                         color: backContainerColor,
                         child: CheckboxListTile(
                           title: TextStyleRes.textUbuntuStyleFont2(
-                            fontSize: 12,
-                            text: StringRes.privacyPolicyAgreement,
-                            textColor: txtColor
-                          ),
+                              fontSize: 12,
+                              text: StringRes.privacyPolicyAgreement,
+                              textColor: txtColor),
                           value: check2,
                           onChanged: (newValue) {
-                           setState(() {
-                             check2 = newValue;
-                           });
+                            setState(() {
+                              check2 = newValue;
+                            });
                           },
                           activeColor: btnColor,
                           controlAffinity: ListTileControlAffinity
@@ -231,7 +229,8 @@ int select=0;
                         containerColor: btnColor,
                         textColor: txtColor,
                         onTap: () {
-                          CommonRoutePage.goToScreen(context, HireUpdateProfile());
+                          CommonRoutePage.goToScreen(
+                              context, HireUpdateProfile());
                         },
                       )
                     ],

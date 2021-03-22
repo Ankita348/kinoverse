@@ -585,13 +585,14 @@ class CommonWidget {
           )),
     );
   }
-  static backWordWithoutIConButton({setState(), toggle,txt}) {
+
+  static backWordWithoutIConButton({setState(), toggle, txt}) {
     return GestureDetector(
       onTap: () {
         setState();
       },
       child: Container(
-        //  width: 100,
+          //  width: 100,
           decoration: BoxDecoration(
             color: toggle != 1 ? btnColor : bgColor,
             border: Border.all(color: btnColor),
@@ -603,6 +604,7 @@ class CommonWidget {
           )),
     );
   }
+
   static forwordButton(setState(), toggle, text) {
     return GestureDetector(
       onTap: () {

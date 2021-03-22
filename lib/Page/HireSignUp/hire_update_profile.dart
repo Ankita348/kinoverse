@@ -40,7 +40,7 @@ int _value=1;
             containerColor: btnColor,
             textColor: txtColor,
             onTap: () {
-              CommonRoutePage.goToScreen(context, StackOver());
+              CommonRoutePage.goToScreen(context, HireContractScreen());
             },
           )
         ],

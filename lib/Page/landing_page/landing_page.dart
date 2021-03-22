@@ -133,7 +133,7 @@ class LandingPageState extends State<LandingPage> {
       child: GestureDetector(
         onTap: () {
           // CommonRoutePage().gotoSignUpPage(context);
-          CommonRoutePage.goToScreen(context,HireSignUp());
+          // CommonRoutePage.goToScreen(context,HireSignUp());
         },
         child: Container(
           height: 35,

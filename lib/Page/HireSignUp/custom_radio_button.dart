@@ -6,6 +6,9 @@ import 'package:kinoverse/common/common_widget.dart';
 import '../../app.dart';
 
 class CustomRadio extends StatefulWidget {
+  int select;
+  Function callBackIndex;
+  CustomRadio({this.select,this.callBackIndex});
   @override
   createState() {
     return new CustomRadioState();
@@ -14,7 +17,6 @@ class CustomRadio extends StatefulWidget {
 
 class CustomRadioState extends State<CustomRadio> {
   List<RadioModel> sampleData = new List<RadioModel>();
-int select=0;
   @override
   void initState() {
     // TODO: implement initState
@@ -26,7 +28,7 @@ int select=0;
           Image.asset(
             App.PayPalLogo,
             fit: BoxFit.fitWidth,
-            height:60,
+            height: 60,
             width: 105,
           ),
           TextStyleRes.textUbuntuStyleFont2(
@@ -39,7 +41,7 @@ int select=0;
     sampleData.add(new RadioModel(
       false,
       Container(
-        height:69,
+        height: 69,
         width: 103,
         child: Image.asset(
           App.Payoneer,
@@ -50,7 +52,7 @@ int select=0;
     sampleData.add(new RadioModel(
       false,
       Container(
-        height:41,
+        height: 41,
         width: 53,
         child: Image.asset(
           App.Mastercard,
@@ -65,16 +67,14 @@ int select=0;
           Image.asset(
             App.cil_bank,
             fit: BoxFit.contain,
-            height:35,
+            height: 35,
             width: 35,
           ),
           SizedBox(
             width: 10,
           ),
           TextStyleRes.textUbuntuStyleFont2(
-              text: StringRes.BankAccount,
-              fontSize: 14,
-              textColor: bgColor),
+              text: StringRes.BankAccount, fontSize: 14, textColor: bgColor),
         ],
       ),
     ));
@@ -82,79 +82,92 @@ int select=0;
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: bgColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextStyleRes.textUbuntuStyleFont2(
-              text: "Payment Options",
-              fontSize: 12,
-              textColor: txtColor),
-          SizedBox(height: 10,),
-          Container(
-            color: txtDescriptionColor,
-            height: getDeviceHeight(context) / 1.6,
-            width: getDeviceWidth(context) / 1,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                new ListView.builder(
-                  itemCount: sampleData.length,
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return new InkWell(
-                      //highlightColor: Colors.red,
-                      // splashColor: Colors.blueAccent,
-                      onTap: () {
-                        setState(() {
-                          sampleData.forEach((element) => element.isSelected = false);
-                          sampleData[index].isSelected = true;
-                        });
-                      },
-                      child: new RadioItem(sampleData[index]),
-                    );
-                  },
-                ),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CommonWidget.squareButton(
-                      containerColor:select!=0?bgColor :btnColor,
-                      fontSize: 12.0,
-                      height: 30.0,
-                      width: 80.0,
-                      text: StringRes.Cancel,
-                      textColor:select!=0?txtColor :txtColor,
-                      onTap: () {
-                        setState(() {
-                          select=0;
-                        });
-                      },
-                    ),
-                    SizedBox(width: 10,),
-                    CommonWidget.squareButton(
-                      containerColor:select!=1?bgColor :btnColor,
-                      fontSize: 12.0,
-                      height: 30.0,
-                      width: 80.0,
-                      text: StringRes.Submit,
-                      textColor:select!=1?txtColor :txtColor,
-                      onTap: () {
-                        setState(() {
-                          select=1;
-                        });
-                      },
-                    ),
-                    SizedBox(width: 10,),
-                  ],
-                ),
-              ],
+    return WillPopScope(
+      onWillPop: (){
+        return widget. callBackIndex(0);
+      },
+      child: new Scaffold(
+        backgroundColor: bgColor,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            TextStyleRes.textUbuntuStyleFont2(
+                text: "Payment Options", fontSize: 12, textColor: txtColor),
+            SizedBox(
+              height: 10,
             ),
-          ),
-
-        ],
+            Container(
+              color: txtDescriptionColor,
+              height: getDeviceHeight(context) / 1.6,
+              width: getDeviceWidth(context) / 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  new ListView.builder(
+                    itemCount: sampleData.length,
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return new InkWell(
+                        //highlightColor: Colors.red,
+                        // splashColor: Colors.blueAccent,
+                        onTap: () {
+                          setState(() {
+                            sampleData
+                                .forEach((element) => element.isSelected = false);
+                            sampleData[index].isSelected = true;
+                          });
+                        },
+                        child: new RadioItem(sampleData[index]),
+                      );
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CommonWidget.squareButton(
+                        containerColor: widget.select != 0 ? bgColor : btnColor,
+                        fontSize: 12.0,
+                        height: 30.0,
+                        width: 80.0,
+                        text: StringRes.Cancel,
+                        textColor: widget.select != 0 ? txtColor : txtColor,
+                        onTap: () {
+                          setState(() {
+                            widget.select = 0;
+                            widget.callBackIndex(0);
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      CommonWidget.squareButton(
+                        containerColor: widget.select != 1 ? bgColor : btnColor,
+                        fontSize: 12.0,
+                        height: 30.0,
+                        width: 80.0,
+                        text: StringRes.Submit,
+                        textColor: widget.select != 1 ? txtColor : txtColor,
+                        onTap: () {
+                          setState(() {
+                            widget.select = 1;
+                            widget.callBackIndex(2);
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

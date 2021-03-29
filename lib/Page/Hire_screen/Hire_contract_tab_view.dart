@@ -13,9 +13,25 @@ class HireContractTabView extends StatefulWidget {
 
 class _HireContractTabViewState extends State<HireContractTabView> {
   TextEditingController searchControler = TextEditingController();
+  int present = 0;
+  int perPage = 1;
+  bool viewMore=false;
+
+  final originalItems = List<String>.generate(10000, (i) => "Item $i");
+  var items = List<String>();
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      items.addAll(originalItems.getRange(present, present + perPage));
+      present = present + perPage;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,6 +152,7 @@ class _HireContractTabViewState extends State<HireContractTabView> {
                         ),
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 3.0),
@@ -165,20 +182,17 @@ class _HireContractTabViewState extends State<HireContractTabView> {
                                 descriptiontextfontSize: 10.0,
                                 descriptiontexttext: StringRes.Duration),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 3.0),
-                            child: CommonWidget.squareDarkBlueGrayButton(
-                                height: 45.0,
-                                width: 90.0,
-                                onTap: () {},
-                                textColor: txtColor,
-                                fontSize: 10.0,
-                                text: StringRes.Expert,
-                                containerColor: backContainerColor,
-                                descriptiontextColor: txtDescriptionColor,
-                                descriptiontextfontSize: 10.0,
-                                descriptiontexttext: StringRes.ExperienceLevel),
-                          ),
+                          CommonWidget.squareDarkBlueGrayButton(
+                              height: 45.0,
+                              width: 93.0,
+                              onTap: () {},
+                              textColor: txtColor,
+                              fontSize: 10.0,
+                              text: StringRes.Expert,
+                              containerColor: backContainerColor,
+                              descriptiontextColor: txtDescriptionColor,
+                              descriptiontextfontSize: 10.0,
+                              descriptiontexttext: StringRes.ExperienceLevel),
                         ],
                       ),
                       SizedBox(
@@ -196,94 +210,189 @@ class _HireContractTabViewState extends State<HireContractTabView> {
                           text: StringRes.FreelancersContracted,
                           fontSize: 12,
                           textColor: txtColor),
-                      ListView.builder(
-                          itemCount: 2,
-                          shrinkWrap: true,
-                          itemBuilder: (context, int index) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      bottom: 8.0, top: 8),
-                                  child: CircleAvatar(
-                                    backgroundColor: btnColor,
-                                    radius: 21,
+                      Container(
+                        height: getDeviceHeight(context )/4,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: AlwaysScrollableScrollPhysics(),
+                            itemCount: (present <= originalItems.length)
+                                ? items.length + 1
+                                : items.length,
+                            itemBuilder: (context, index) {
+                              return (index == items.length) ?Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        bottom: 8.0, top: 8),
                                     child: CircleAvatar(
-                                      radius: 20,
-                                      backgroundImage: AssetImage(App.profile),
+                                      backgroundColor: btnColor,
+                                      radius: 21,
+                                      child: CircleAvatar(
+                                        radius: 20,
+                                        backgroundImage: AssetImage(App.profile),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Column(
-                                    children: [
-                                      TextStyleRes.textUbuntuStyleFont2(
-                                          textColor: txtColor,
-                                          text: "Sheila Anastasia",
-                                          fontSize: 10),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 4.0),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              width: 10,
-                                              height: 10,
-                                              child: Image.asset(
-                                                App.location,
-                                                color: txtDescriptionColor,
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Column(
+                                      children: [
+                                        TextStyleRes.textUbuntuStyleFont2(
+                                            textColor: txtColor,
+                                            text: "Sheila Anastasia",
+                                            fontSize: 10),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 4.0),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                width: 10,
+                                                height: 10,
+                                                child: Image.asset(
+                                                  App.location,
+                                                  color: txtDescriptionColor,
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              width: 4,
-                                            ),
-                                            TextStyleRes.textUbuntuStyleFont2(
-                                                textColor: txtDescriptionColor,
-                                                text: "San Fransisco, USA",
-                                                fontSize: 8),
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              TextStyleRes.textUbuntuStyleFont2(
+                                                  textColor: txtDescriptionColor,
+                                                  text: "San Fransisco, USA",
+                                                  fontSize: 8),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Spacer(),
-                                CommonWidget.squareWithIconButton(
-                                    textColor: txtColor,
-                                    containerColor: btnColor,
-                                    fontSize: 12.0,
-                                    borderColor: btnColor,
-                                    sizeboxWidth: 8.0,
-                                    text: StringRes.PayFilmaker,
-                                    onTap: () {
-                                      CommonRoutePage.goToScreen(
-                                          context, HireContractScreen());
-                                    },
-                                    width: 120.0,
-                                    height: 30.0)
-                              ],
-                            );
-                          }),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 8, bottom: 8),
-                            child: TextStyleRes.textUbuntuStyleFont2(
-                                text: StringRes.viewMore,
-                                fontSize: 12,
-                                textColor: txtDescriptionColor),
+                                  Spacer(),
+                                  CommonWidget.squareWithIconButton(
+                                      textColor: txtColor,
+                                      containerColor: btnColor,
+                                      fontSize: 12.0,
+                                      borderColor: btnColor,
+                                      sizeboxWidth: 8.0,
+                                      text: StringRes.PayFilmaker,
+                                      onTap: () {
+                                        CommonRoutePage.goToScreen(
+                                            context, HireContractScreen());
+                                      },
+                                      width: 120.0,
+                                      height: 30.0)
+                                ],
+                              ):Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        bottom: 8.0, top: 8),
+                                    child: CircleAvatar(
+                                      backgroundColor: btnColor,
+                                      radius: 21,
+                                      child: CircleAvatar(
+                                        radius: 20,
+                                        backgroundImage: AssetImage(App.profile),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Column(
+                                      children: [
+                                        TextStyleRes.textUbuntuStyleFont2(
+                                            textColor: txtColor,
+                                            text: "Sheila Anastasia",
+                                            fontSize: 10),
+                                        Padding(
+                                          padding:
+                                          const EdgeInsets.only(top: 4.0),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                width: 10,
+                                                height: 10,
+                                                child: Image.asset(
+                                                  App.location,
+                                                  color: txtDescriptionColor,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 4,
+                                              ),
+                                              TextStyleRes.textUbuntuStyleFont2(
+                                                  textColor: txtDescriptionColor,
+                                                  text: "San Fransisco, USA",
+                                                  fontSize: 8),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  CommonWidget.squareWithIconButton(
+                                      textColor: txtColor,
+                                      containerColor: btnColor,
+                                      fontSize: 12.0,
+                                      borderColor: btnColor,
+                                      sizeboxWidth: 8.0,
+                                      text: StringRes.PayFilmaker,
+                                      onTap: () {
+                                        CommonRoutePage.goToScreen(
+                                            context, HireContractScreen());
+                                      },
+                                      width: 120.0,
+                                      height: 30.0)
+                                ],
+                              );
+                            }),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left:2.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if ((present + perPage) >
+                                  originalItems.length) {
+                                items.addAll(originalItems.getRange(
+                                    present, originalItems.length));
+                                print("onpress iff");
+                                viewMore=false;
+                              }
+                              else {
+                                viewMore=true;
+                                items.addAll(originalItems.getRange(
+                                    present, present + perPage));
+                                print("onpress else part");
+                              }
+                              present = present + perPage;
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                EdgeInsets.only(top: 8, bottom: 8),
+                                child:
+                                TextStyleRes.textUbuntuStyleFont2(
+                                    text: StringRes.viewMore,
+                                    fontSize: 12,
+                                    textColor: viewMore==false?txtDescriptionColor:btnColor),
+                              ),
+                              Icon(
+                                Icons.keyboard_arrow_up,
+                                color: viewMore==false?txtDescriptionColor:btnColor,
+                                size: 12,
+                              )
+                            ],
                           ),
-                          Icon(
-                            Icons.keyboard_arrow_up,
-                            color: txtDescriptionColor,
-                            size: 12,
-                          )
-                        ],
+                        ),
                       ),
                       SizedBox(
-                        height: 100,
+                        height: 20,
                       ),
                     ],
                   ),

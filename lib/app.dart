@@ -54,7 +54,7 @@ class App {
   static const addic = '$root' + 'add_ic.png';
   static const total = '$root' + 'total.png';
   static const charge = '$root' + 'charge.png';
-  static const PayPalLogo = '$root' + 'PayPal-Logo 1.png';
+  static const PayPalLogo = '$root' + 'PayPalc.png';
   static const Mastercard = '$root' + 'Mastercard-logo 1.png';
   static const Payoneer = '$root' + 'Payoneer-Logo 1.png';
   static const cil_bank = '$root' + 'cil_bank.png';

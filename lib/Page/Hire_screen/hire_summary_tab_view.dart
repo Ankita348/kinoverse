@@ -12,6 +12,7 @@ class HireSummaryTabView extends StatefulWidget {
 class _HireSummaryTabViewState extends State<HireSummaryTabView> {
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return Padding(
       padding: const EdgeInsets.only(top: 14.0, left: 20, right: 20),
       child: SingleChildScrollView(

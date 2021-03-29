@@ -16,6 +16,7 @@ class _HireFilmMakerState extends State<HireFilmMaker> {
   int toggle = 1;
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.only(top: 10.0, left: 20, right: 20),
@@ -24,7 +25,7 @@ class _HireFilmMakerState extends State<HireFilmMaker> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CommonWidget.darkStraightContainer(
-                color: txtDescriptionColor,
+                color: backContainerColor,
                 dollarString: "\$450",
                 imageName: App.total,
                 textAfterImage: StringRes.Budget),
@@ -186,7 +187,8 @@ class _HireFilmMakerState extends State<HireFilmMaker> {
                             sizeboxWidth: 8.0,
                             text: StringRes.AddtoPayment,
                             onTap: () {},
-                            imageName: App.edit,
+                            imageName: App.addPeopleIcon,
+                            imageColor: txtColor,
                             width: 120.0,
                             height: 30.0)
                       ],

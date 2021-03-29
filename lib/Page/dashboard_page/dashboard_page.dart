@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kinoverse/Page/Hire_screen/Hire_contract_tab_view.dart';
+import 'package:kinoverse/Page/Hire_screen/Hire_posting_tab_view.dart';
+import 'package:kinoverse/Page/Hire_screen/hire_all_tabe_view.dart';
+import 'package:kinoverse/Page/Hire_screen/hire_chat_screen.dart';
 import 'package:kinoverse/Page/Hire_screen/hire_favourite_film_maker.dart';
 import 'package:kinoverse/Page/Hire_screen/hire_film_maker_tabview.dart';
+import 'package:kinoverse/Page/Hire_screen/hire_search_tab_view.dart';
 import 'package:kinoverse/Page/Hire_screen/hire_your_notification.dart';
 import 'package:kinoverse/Page/Hire_screen/post_new_job_1/post_new_job_1.dart';
 import 'package:kinoverse/Page/Hire_screen/post_new_job_2/post_new_job_2.dart';
@@ -9,10 +14,6 @@ import 'package:kinoverse/Page/Hire_screen/post_new_job_4/post_new_job_4.dart';
 import 'package:kinoverse/Page/Hire_screen/post_new_job_5/post_new_job5.dart';
 import 'package:kinoverse/Page/Hire_screen/post_new_job_6/post_new_job_6.dart';
 import 'package:kinoverse/Page/Hire_screen/post_new_job_7/post_new_job_7.dart';
-import 'package:kinoverse/Page/custom_widget/Hire_contract_tab_view.dart';
-import 'package:kinoverse/Page/custom_widget/Hire_posting_tab_view.dart';
-import 'package:kinoverse/Page/custom_widget/hire_all_tabe_view.dart';
-import 'package:kinoverse/Page/custom_widget/hire_search_tab_view.dart';
 import 'package:kinoverse/Page/dashboard_page/profile_pop_up.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/common_widget.dart';
@@ -57,11 +58,14 @@ class DashBoardPageState extends State<DashBoardPage>
           ? appBarJobsWithTabBar()
           : widget.menuIndex == 12
               ? appBarJobsApcWithTabBar()
-              : CommonWidget.hireAppbar(context,
+              : CommonWidget.hireAppbar(
+                  context,
                   widget.menuIndex == 3 ? "Your Notifications" : "Post Job",
                   () {
-                  _scaffoldKey.currentState.openDrawer();
-                }),
+                    _scaffoldKey.currentState.openDrawer();
+                  },
+                  txtAppBar: widget.menuIndex == 3 ? "Alerts" : "Jobs",
+                ),
       backgroundColor: bgColor,
       drawer: Drawer(child: CommonWidget.drawer(context)),
       bottomNavigationBar: bottomNavigationBar(context, changeIndex),
@@ -332,6 +336,7 @@ class DashBoardPageState extends State<DashBoardPage>
     } else if (widget.menuIndex == 105) {
       return PostNewJob7(changeIndex);
     } else if (widget.menuIndex == 2) {
+      return HireChatView();
     } else if (widget.menuIndex == 3) {
       return HireYourNotification();
     } else if (widget.menuIndex == 4) {

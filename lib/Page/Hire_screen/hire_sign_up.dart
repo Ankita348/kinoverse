@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:kinoverse/Page/Hire_screen/hire_update_profile.dart';
 import 'package:kinoverse/app.dart';
@@ -15,6 +16,7 @@ class _HireSignUpState extends State<HireSignUp> {
   bool check1 = false;
   bool check2 = false;
   int select = 0;
+
   @override
   Widget build(BuildContext context) {
     print("runtimeType -> " + runtimeType.toString());
@@ -120,21 +122,49 @@ class _HireSignUpState extends State<HireSignUp> {
                                   blurRadius: 6)
                             ],
                           ),
-                          child: ExpansionTile(
-                            leading: Container(
-                                height: 20, child: Image.asset(App.vactor)),
-                            title: TextStyleRes.textStyleFont1(
-                                textColor: txtColor,
-                                textAlign: TextAlign.left,
-                                fontSize: 12,
-                                text: StringRes.indonesia),
-                            trailing: Icon(
-                              Icons.keyboard_arrow_down_outlined,
-                              color: txtColor,
-                              size: 20,
+                          child:CountryCodePicker(
+                            showFlag: true,
+                            dialogBackgroundColor: bgColor,
+                            dialogSize: Size.square(300),
+                            boxDecoration:  BoxDecoration(
+                              color: bgColor,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: shadowColorBlack,
+                                    spreadRadius: 1,
+                                    blurRadius: 6)
+                              ],
                             ),
-                            backgroundColor: bgColor,
-                          ),
+                            // backgroundColor: backContainerColor,
+                            dialogTextStyle: TextStyle(
+                              color: txtColor,
+                            ),
+                            textStyle: TextStyle(color: txtColor),
+                            alignLeft: true,
+                            hideSearch: true,
+
+                            enabled: true,
+                            onChanged: (c) => c.name,
+
+                            // initialSelection: 'IND',
+                            showCountryOnly: true,
+                            showOnlyCountryWhenClosed: true,
+                            // favorite: ['+39', 'FR'],
+                          )
+                          // GestureDetector(
+                          //   child: ExpansionTile(
+                          //     // leading: Container(
+                          //     //     height: 20, child: Image.asset(App.vactor)),
+                          //     leading: ,
+                          //     trailing: Icon(
+                          //       Icons.keyboard_arrow_down_outlined,
+                          //       color: txtColor,
+                          //       size: 20,
+                          //     ),
+                          //     backgroundColor: bgColor,
+                          //   ),),
+
+
                         ),
                       ),
                       SizedBox(
@@ -185,11 +215,10 @@ class _HireSignUpState extends State<HireSignUp> {
                         width: 300,
                         child: CheckboxListTile(
                           title: TextStyleRes.textUbuntuStyleFont2(
-                            fontSize: 12,
-                             maxLine: 3,
-                            text: StringRes.sendMeUsefulEmail,
-                            textColor: txtColor
-                          ),
+                              fontSize: 12,
+                              maxLine: 3,
+                              text: StringRes.sendMeUsefulEmail,
+                              textColor: txtColor),
                           value: check1,
                           onChanged: (newValue) {
                             setState(() {
@@ -206,11 +235,10 @@ class _HireSignUpState extends State<HireSignUp> {
                         color: backContainerColor,
                         child: CheckboxListTile(
                           title: TextStyleRes.textUbuntuStyleFont2(
-                            fontSize: 12,
+                              fontSize: 12,
                               maxLine: 3,
-                            text: StringRes.privacyPolicyAgreement,
-                            textColor: txtColor
-                          ),
+                              text: StringRes.privacyPolicyAgreement,
+                              textColor: txtColor),
                           value: check2,
                           onChanged: (newValue) {
                             setState(() {

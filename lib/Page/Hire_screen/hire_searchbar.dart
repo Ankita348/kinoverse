@@ -16,8 +16,10 @@ class HireSearchBar extends StatefulWidget {
 }
 
 class _HireSearchBarState extends State<HireSearchBar> {
+
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return Container(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

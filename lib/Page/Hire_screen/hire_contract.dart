@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/custom_widget/Hire_filmMaker.dart';
-import 'package:kinoverse/Page/custom_widget/Hire_payNow_view.dart';
-import 'package:kinoverse/Page/custom_widget/hire_summary_tab_view.dart';
 import 'package:kinoverse/Page/dashboard_page/profile_pop_up.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
 
+import 'Hire_filmMaker.dart';
+import 'Hire_payNow_view.dart';
 import 'custom_radio_button.dart';
+import 'hire_summary_tab_view.dart';
 
 typedef void RatingChangeCallback(double rating);
 
@@ -37,6 +37,7 @@ class HireContractScreenState extends State<HireContractScreen>
 
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(child: CommonWidget.drawer(context)),

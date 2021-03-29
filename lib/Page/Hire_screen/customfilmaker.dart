@@ -7,8 +7,9 @@ import 'package:kinoverse/common/common_widget.dart';
 
 class ContainerFilmMakker extends StatefulWidget {
   double rating;
-
-  ContainerFilmMakker({Key key, this.rating}) : super(key: key);
+  bool isViewMore;
+  int index;
+  ContainerFilmMakker({Key key, this.rating,this.isViewMore,this. index}) : super(key: key);
 
   @override
   _ContainerFilmMakkerState createState() => _ContainerFilmMakkerState();
@@ -19,8 +20,10 @@ class _ContainerFilmMakkerState extends State<ContainerFilmMakker> {
   bool isinviteTojob = false;
   bool isFav = false;
 
+
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -111,11 +114,11 @@ class _ContainerFilmMakkerState extends State<ContainerFilmMakker> {
                 SizedBox(
                   height: 8,
                 ),
-                TextStyleRes.textUbuntuStyleFont2(
+               widget.isViewMore? TextStyleRes.textUbuntuStyleFont2(
                     maxLine: 3,
                     textColor: txtColor,
                     text: StringRes.experience,
-                    fontSize: 10),
+                    fontSize: 10):SizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 10),
                   child: Row(
@@ -246,21 +249,28 @@ class _ContainerFilmMakkerState extends State<ContainerFilmMakker> {
                         textColor: txtDescriptionColor),
                   ],
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 8, bottom: 8),
-                      child: TextStyleRes.textUbuntuStyleFont2(
-                          text: StringRes.viewMore,
-                          fontSize: 12,
-                          textColor: txtDescriptionColor),
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_up,
-                      color: txtDescriptionColor,
-                      size: 12,
-                    )
-                  ],
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      widget.isViewMore=!widget.isViewMore;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 8, bottom: 8),
+                        child: TextStyleRes.textUbuntuStyleFont2(
+                            text: StringRes.viewMore,
+                            fontSize: 12,
+                            textColor:  widget.isViewMore?btnColor:txtDescriptionColor),
+                      ),
+                      Icon(
+                        widget.isViewMore?Icons.keyboard_arrow_up:Icons.keyboard_arrow_down,
+                        color:  widget.isViewMore?btnColor:txtDescriptionColor,
+                        size: 12,
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),

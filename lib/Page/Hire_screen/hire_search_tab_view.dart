@@ -1,12 +1,13 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/custom_widget/customfilmaker.dart';
+import 'package:kinoverse/Page/Hire_screen/hire_searchbar.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
-import 'package:kinoverse/Page/custom_widget/hire_searchbar.dart';
+
+import 'customfilmaker.dart';
 class HireSearchTabView extends StatefulWidget {
   @override
   _HireSearchTabViewState createState() => _HireSearchTabViewState();
@@ -14,10 +15,11 @@ class HireSearchTabView extends StatefulWidget {
 
 class _HireSearchTabViewState extends State<HireSearchTabView> {
   TextEditingController searchController = TextEditingController();
-  double rating = 3.5;
+  double rating = 0;
 
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -78,7 +80,9 @@ class _HireSearchTabViewState extends State<HireSearchTabView> {
                 shrinkWrap: true,
                 itemBuilder: (context, int index) {
                   return ContainerFilmMakker(
+                    index: index,
                     rating: rating,
+                    isViewMore: false,
                   );
                 }),
           )

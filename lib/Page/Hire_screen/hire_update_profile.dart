@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:kinoverse/Page/dashboard_page/dashboard_page.dart';
 import 'package:kinoverse/app.dart';
@@ -20,6 +21,7 @@ class _HireUpdateProfileState extends State<HireUpdateProfile> {
   int _value = 1;
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return Scaffold(
       backgroundColor: bgColor,
       appBar: appbar(context),
@@ -110,6 +112,7 @@ class _HireUpdateProfileState extends State<HireUpdateProfile> {
             ),
             TextStyleRes.textUbuntuStyleFont2(
                 textColor: txtColor, text: StringRes.timezone, fontSize: 10.0),
+
             categoryDropDown(),
             SizedBox(
               height: 5,
@@ -136,42 +139,76 @@ class _HireUpdateProfileState extends State<HireUpdateProfile> {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: Container(
-        height: getDeviceHeight(context) / 18,
-        padding: EdgeInsets.symmetric(horizontal: 40),
+        height: 50,
+        // height: getDeviceHeight(context) / 18,
+        width: getDeviceWidth(context)/1.5,
+        // padding: EdgeInsets.symmetric(horizontal: 40),
         decoration: BoxDecoration(
           border: Border.all(
               color: btnBorderWhite, style: BorderStyle.solid, width: 0.80),
         ),
-        child: Theme(
-          data: ThemeData(canvasColor: bgColor),
-          child: DropdownButton(
-              underline: SizedBox(),
-              hint: TextStyleRes.textUbuntuStyleFont2(
-                  fontSize: 10,
-                  text: "UTC+07:00 Omsk, Novosibirsk",
-                  textColor: txtColor),
-              style: TextStyle(fontSize: 10, color: txtColor),
-              value: _value,
-              items: [
-                DropdownMenuItem(
-                  child: Text(
-                    "UTC+07:00 Omsk, Novosibirsk",
-                  ),
-                  value: 1,
-                ),
-                DropdownMenuItem(
-                  child: Text("Second Item"),
-                  value: 2,
-                ),
-                DropdownMenuItem(child: Text("Third Item"), value: 3),
-                DropdownMenuItem(child: Text("Fourth Item"), value: 4)
-              ],
-              onChanged: (value) {
-                setState(() {
-                  _value = value;
-                });
-              }),
+        child: CountryCodePicker(
+          showFlag: false,
+          // showDropDownButton: true,
+
+          dialogBackgroundColor: bgColor,
+          dialogSize: Size.square(300),
+          boxDecoration:  BoxDecoration(
+            color: bgColor,
+            boxShadow: [
+              BoxShadow(
+                  color: shadowColorBlack,
+                  spreadRadius: 1,
+                  blurRadius: 6)
+            ],
+          ),
+          // backgroundColor: backContainerColor,
+          dialogTextStyle: TextStyle(
+            color: txtColor,
+          ),
+          textStyle: TextStyle(color: txtColor),
+          alignLeft: true,
+          hideSearch: true,
+
+          enabled: true,
+          onChanged: (c) => c.name,
+
+          // initialSelection: 'IND',
+          showCountryOnly: true,
+          showOnlyCountryWhenClosed: true,
+          // favorite: ['+39', 'FR'],
         ),
+        // child: Theme(
+        //   data: ThemeData(canvasColor: bgColor),
+        //   child: DropdownButton(
+        //       underline: SizedBox(),
+        //       hint: TextStyleRes.textUbuntuStyleFont2(
+        //           fontSize: 10,
+        //           text: "UTC+07:00 Omsk, Novosibirsk",
+        //           textColor: txtColor),
+        //       style: TextStyle(fontSize: 10, color: txtColor),
+        //       value: _value,
+        //       items: [
+        //         DropdownMenuItem(
+        //           child: Text(
+        //             "UTC+07:00 Omsk, Novosibirsk",
+        //           ),
+        //           value: 1,
+        //         ),
+        //         DropdownMenuItem(
+        //           child: Text("Second Item"),
+        //           value: 2,
+        //         ),
+        //         DropdownMenuItem(child: Text("Third Item"), value: 3),
+        //         DropdownMenuItem(child: Text("Fourth Item"), value: 4)
+        //       ],
+        //       onChanged: (value) {
+        //         setState(() {
+        //           _value = value;
+        //         });
+        //       }),
+        //   child: ,
+        // ),
       ),
     );
   }

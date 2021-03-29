@@ -27,6 +27,7 @@ class _HireChatViewState extends State<HireChatView> {
 
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [

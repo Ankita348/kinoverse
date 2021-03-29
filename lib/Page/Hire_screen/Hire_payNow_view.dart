@@ -14,9 +14,10 @@ class HirePayNowView extends StatefulWidget {
 }
 
 class _HirePayNowViewState extends State<HirePayNowView> {
-  double rating = 3.5;
+  double rating = 0;
   @override
   Widget build(BuildContext context) {
+    print("runtimeType -> " + runtimeType.toString());
     return WillPopScope(
       onWillPop: () {
         return widget.callBackIndex(1);
@@ -67,97 +68,112 @@ class _HirePayNowViewState extends State<HirePayNowView> {
               ),
               Container(
                 color: backContainerColor,
-                height: getDeviceHeight(context) / 3.2,
+                height: getDeviceHeight(context) / 3,
                 width: getDeviceWidth(context) / 1,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          TextStyleRes.textUbuntuStyleFont2(
-                              text: StringRes.videographer,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            TextStyleRes.textUbuntuStyleFont2(
+                                text: StringRes.videographer,
+                                fontSize: 12,
+                                textColor: txtColor),
+                            Padding(
+                              padding: EdgeInsets.only(left: 25),
+                              child: CommonWidget.activeButton(),
+                            )
+                          ],
+                        ),
+                        TextStyleRes.textUbuntuStyleFont2(
+                            text: "Due March 21, 2021",
+                            fontSize: 10,
+                            textColor: txtDescriptionColor),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 8, bottom: 8),
+                              child: TextStyleRes.textUbuntuStyleFont2(
+                                  text: StringRes.viewMore,
+                                  fontSize: 12,
+                                  textColor: txtDescriptionColor),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_down,
+                              color: txtDescriptionColor,
+                              size: 12,
+                            )
+                          ],
+                        ),
+                        TextStyleRes.textUbuntuStyleFont2(
+                            text: StringRes.willPaidTo,
+                            fontSize: 12,
+                            textColor: txtColor),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 8.0, top: 8, right: 8),
+                              child: CircleAvatar(
+                                radius: 21,
+                                backgroundColor: btnColor,
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: AssetImage(App.profile),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 8.0, top: 8, right: 8),
+                              child: CircleAvatar(
+                                radius: 21,
+                                backgroundColor: btnColor,
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: AssetImage(App.profile),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 8),
+                          child: TextStyleRes.textUbuntuStyleFont2(
+                              text: StringRes.PaymentMethod,
                               fontSize: 12,
                               textColor: txtColor),
-                          Padding(
-                            padding: EdgeInsets.only(left: 25),
-                            child: CommonWidget.activeButton(),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 8, bottom: 8),
-                        child: TextStyleRes.textUbuntuStyleFont2(
-                            text: StringRes.viewMore,
-                            fontSize: 12,
-                            textColor: txtDescriptionColor),
-                      ),
-                      TextStyleRes.textUbuntuStyleFont2(
-                          text: StringRes.willPaidTo,
-                          fontSize: 12,
-                          textColor: txtColor),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                bottom: 8.0, top: 8, right: 8),
-                            child: CircleAvatar(
-                              radius: 21,
-                              backgroundColor: btnColor,
-                              child: CircleAvatar(
-                                radius: 20,
-                                backgroundImage: AssetImage(App.profile),
-                              ),
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                                height: 30,
+                                width: 120,
+                                color: txtColor,
+                                child: Center(
+                                  child: TextStyleRes.textUbuntuStyleFont2(
+                                      text: StringRes.milestones,
+                                      fontSize: 12,
+                                      textColor: bgColor),
+                                )),
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                bottom: 8.0, top: 8, right: 8),
-                            child: CircleAvatar(
-                              radius: 21,
-                              backgroundColor: btnColor,
-                              child: CircleAvatar(
-                                radius: 20,
-                                backgroundImage: AssetImage(App.profile),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 8),
-                        child: TextStyleRes.textUbuntuStyleFont2(
-                            text: StringRes.PaymentMethod,
-                            fontSize: 12,
-                            textColor: txtDescriptionColor),
-                      ),
-                      Row(
-                        children: [
-                          Container(
+                            Container(
                               height: 30,
                               width: 120,
-                              color: txtColor,
-                              child: Center(
-                                child: TextStyleRes.textUbuntuStyleFont2(
-                                    text: StringRes.milestones,
-                                    fontSize: 12,
-                                    textColor: bgColor),
-                              )),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            height: 30,
-                            width: 120,
-                            child: Image.asset(
-                              App.paypal,
-                              fit: BoxFit.fitWidth,
+                              child: Image.asset(
+                                App.paypal,
+                                fit: BoxFit.fitWidth,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -201,7 +217,7 @@ class _HirePayNowViewState extends State<HirePayNowView> {
               Row(
                 children: [
                   TextStyleRes.textUbuntuStyleFont2(
-                      text: StringRes.PaymentMethod,
+                      text: "(5 Stars is perfect work)",
                       fontSize: 12,
                       textColor: txtDescriptionColor),
                   Spacer(),

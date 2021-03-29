@@ -398,7 +398,7 @@ class CommonWidget {
       onTap,
       imageName,
       borderColor,
-      sizeboxWidth}) {
+      sizeboxWidth,imageColor}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -420,6 +420,7 @@ class CommonWidget {
               imageName != null
                   ? Image.asset(
                       imageName,
+                      color: imageColor,
                       height: 17,
                       width: 16,
                     )
@@ -488,7 +489,7 @@ class CommonWidget {
     );
   }
 
-  static hireAppbar(context, text, drawer()) {
+  static hireAppbar(context,text, drawer(),{ txtAppBar}) {
     return PreferredSize(
       preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.11),
       child: Container(
@@ -520,7 +521,7 @@ class CommonWidget {
                     ),
                   ),
                   Text(
-                    "Jobs",
+                    txtAppBar==null?"Jobs":txtAppBar,
                     style: TextStyle(
                         color: colorWhite,
                         fontFamily: App.font1,
@@ -805,7 +806,7 @@ class CommonWidget {
             TextStyleRes.textUbuntuStyleFont2(
                 text: extratext == null ? "" : extratext,
                 fontSize: 10,
-                textColor: txtDescriptionColor),
+                textColor: txtColor),
             Spacer(),
             TextStyleRes.textUbuntuStyleFont2(
                 text: dollarString, fontSize: 12, textColor: txtColor),

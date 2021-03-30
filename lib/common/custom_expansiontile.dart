@@ -1,7 +1,3 @@
-// Copyright 2017 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
 
 const Duration _kExpand = Duration(milliseconds: 200);
@@ -83,11 +79,11 @@ class ExpansionTile extends StatefulWidget {
 class _ExpansionTileState extends State<ExpansionTile>
     with SingleTickerProviderStateMixin {
   static final Animatable<double> _easeOutTween =
-  CurveTween(curve: Curves.easeOut);
+      CurveTween(curve: Curves.easeOut);
   static final Animatable<double> _easeInTween =
-  CurveTween(curve: Curves.easeIn);
+      CurveTween(curve: Curves.easeIn);
   static final Animatable<double> _halfTween =
-  Tween<double>(begin: 0.0, end: 0.5);
+      Tween<double>(begin: 0.0, end: 0.5);
 
   final ColorTween _borderColorTween = ColorTween();
   final ColorTween _headerColorTween = ColorTween();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
+import 'package:kinoverse/common/custom_expansiontile.dart' as custom;
 
 class PostNewJob1 extends StatefulWidget {
   final Function callback;
@@ -20,78 +21,74 @@ class _PostNewJob1State extends State<PostNewJob1> {
       backgroundColor: bgColor,
       body: Padding(
         padding: const EdgeInsets.only(top: 15, right: 15.0, left: 15.0),
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextStyleRes.textUbuntuStyleFont2(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextStyleRes.textUbuntuStyleFont2(
+                  fontSize: 10,
+                  text: "Enter the name of your job post",
+                  fontWeight: FontWeight.bold,
+                  textColor: colorWhite),
+              jobTextField(),
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0),
+                child: TextStyleRes.textUbuntuStyleFont2(
                     fontSize: 10,
-                    text: "Enter the name of your job post",
+                    text: "Here are some good examples:",
                     fontWeight: FontWeight.bold,
                     textColor: colorWhite),
-                jobTextField(),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
-                  child: TextStyleRes.textUbuntuStyleFont2(
-                      fontSize: 10,
-                      text: "Here are some good examples:",
-                      fontWeight: FontWeight.bold,
-                      textColor: colorWhite),
-                ),
-                exampleText(),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: TextStyleRes.textUbuntuStyleFont2(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 10,
-                      text: "Job Category",
-                      textColor: colorWhite),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: TextStyleRes.textUbuntuStyleFont2(
-                      maxLine: 2,
-                      fontSize: 10,
-                      text:
-                          "Let’s categorize your job, which help us personalize your job details and match your job to relevant freelancers and agencies.",
-                      textColor: colorWhite),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
-                  child: TextStyleRes.textUbuntuStyleFont2(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 10,
-                      text:
-                          "Here are some suggestions based on your job title:",
-                      textColor: colorWhite),
-                ),
-                categoryDropDown()
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20.0, left: 15, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CommonWidget.backButton(
-                      setState: () {
-                        setState(() {
-                          toggle = 0;
-                        });
-                        widget.callback(1);
-                      },
-                      toggle: toggle),
-                  CommonWidget.nextButton(() {
-                    setState(() {
-                      toggle = 1;
-                    });
-                    widget.callback(100);
-                  }, toggle)
-                ],
               ),
-            )
+              exampleText(),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: TextStyleRes.textUbuntuStyleFont2(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                    text: "Job Category",
+                    textColor: colorWhite),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: TextStyleRes.textUbuntuStyleFont2(
+                    maxLine: 2,
+                    fontSize: 10,
+                    text:
+                        "Let’s categorize your job, which help us personalize your job details and match your job to relevant freelancers and agencies.",
+                    textColor: colorWhite),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0),
+                child: TextStyleRes.textUbuntuStyleFont2(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                    text: "Here are some suggestions based on your job title:",
+                    textColor: colorWhite),
+              ),
+              categoryDropDown()
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0, left: 15, right: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CommonWidget.backButton(
+                setState: () {
+                  setState(() {
+                    toggle = 0;
+                  });
+                  widget.callback(1);
+                },
+                toggle: toggle),
+            CommonWidget.nextButton(() {
+              setState(() {
+                toggle = 1;
+              });
+              widget.callback(100);
+            }, toggle)
           ],
         ),
       ),
@@ -193,240 +190,358 @@ class _PostNewJob1State extends State<PostNewJob1> {
 
   categoryDropDown() {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 10.0, right: 60),
       child: Container(
-        height: getDeviceHeight(context) / 18,
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        decoration: BoxDecoration(
-          border: Border.all(
-              color: btnBorderWhite, style: BorderStyle.solid, width: 0.80),
-        ),
-        child: Theme(
-          data: ThemeData(
-            canvasColor: bgColor,
-          ),
-          child: DropdownButton(
-              focusColor: backContainerColor,
-              autofocus: true,
-              underline: SizedBox(),
-              hint: TextStyleRes.textUbuntuStyleFont2(
+          decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
+          child: ListTileTheme(
+            dense: true,
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
+              title: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
                   text: selectedItem(),
                   textColor: btnBorderWhite),
-              style: TextStyle(fontSize: 10, color: colorWhite),
-              //  value: _value ?? Text(_value.toString()),
-              items: [
-                DropdownMenuItem(
-                  child: Row(
+              children: [
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          _value = 1;
-                        },
-                        child: Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: btnBorderWhite)),
-                          child: _value == 1
-                              ? Center(
+                      Container(
+                        color: _value == 1
+                            ? backContainerColor
+                            : Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 4, bottom: 4),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _value = 1;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, right: 8.0),
                                   child: Container(
-                                    height: 12,
-                                    width: 12,
-                                    color: btnColor,
+                                    height: 16,
+                                    width: 16,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: btnColor)),
+                                    child: _value == 1
+                                        ? Center(
+                                            child: Container(
+                                              height: 10,
+                                              width: 10,
+                                              color: btnColor,
+                                            ),
+                                          )
+                                        : SizedBox(),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 4, right: 8),
+                                child: TextStyleRes.textUbuntuStyleFont2(
+                                    fontSize: 10,
+                                    text: "Scripwriter",
+                                    textColor: colorWhite),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text("Scripwriter"),
-                    ],
-                  ),
-                  value: 1,
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _value = 2;
-                        },
-                        child: Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: btnBorderWhite)),
-                          child: _value == 2
-                              ? Center(
+                      Container(
+                        color: _value == 2
+                            ? backContainerColor
+                            : Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 4, bottom: 4),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _value = 2;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, right: 8.0),
                                   child: Container(
-                                    height: 12,
-                                    width: 12,
-                                    color: btnColor,
+                                    height: 16,
+                                    width: 16,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: btnColor)),
+                                    child: _value == 2
+                                        ? Center(
+                                            child: Container(
+                                              height: 10,
+                                              width: 10,
+                                              color: btnColor,
+                                            ),
+                                          )
+                                        : SizedBox(),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 4, right: 8),
+                                child: TextStyleRes.textUbuntuStyleFont2(
+                                    fontSize: 10,
+                                    text: "Director",
+                                    textColor: colorWhite),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text("Director"),
-                    ],
-                  ),
-                  value: 2,
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _value = 3;
-                        },
-                        child: Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: btnBorderWhite)),
-                          child: _value == 3
-                              ? Center(
+                      Container(
+                        color: _value == 3
+                            ? backContainerColor
+                            : Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 4, bottom: 4),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _value = 3;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, right: 8.0),
                                   child: Container(
-                                    height: 12,
-                                    width: 12,
-                                    color: btnColor,
+                                    height: 16,
+                                    width: 16,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: btnColor)),
+                                    child: _value == 3
+                                        ? Center(
+                                            child: Container(
+                                              height: 10,
+                                              width: 10,
+                                              color: btnColor,
+                                            ),
+                                          )
+                                        : SizedBox(),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 4, right: 8),
+                                child: TextStyleRes.textUbuntuStyleFont2(
+                                    fontSize: 10,
+                                    text: "Business or Youtube Video",
+                                    textColor: colorWhite),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text("Business or Youtube Video"),
-                    ],
-                  ),
-                  value: 3,
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _value = 4;
-                        },
-                        child: Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: btnBorderWhite)),
-                          child: _value == 4
-                              ? Center(
+                      Container(
+                        color: _value == 4
+                            ? backContainerColor
+                            : Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 4, bottom: 4),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _value = 4;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, right: 8.0),
                                   child: Container(
-                                    height: 12,
-                                    width: 12,
-                                    color: btnColor,
+                                    height: 16,
+                                    width: 16,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: btnColor)),
+                                    child: _value == 4
+                                        ? Center(
+                                            child: Container(
+                                              height: 10,
+                                              width: 10,
+                                              color: btnColor,
+                                            ),
+                                          )
+                                        : SizedBox(),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 4, right: 8),
+                                child: TextStyleRes.textUbuntuStyleFont2(
+                                    fontSize: 10,
+                                    text: "Costume Designer",
+                                    textColor: colorWhite),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text("Costume Designer"),
-                    ],
-                  ),
-                  value: 4,
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _value = 5;
-                        },
-                        child: Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: btnBorderWhite)),
-                          child: _value == 5
-                              ? Center(
+                      Container(
+                        color: _value == 5
+                            ? backContainerColor
+                            : Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 4, bottom: 4),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _value = 5;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, right: 8.0),
                                   child: Container(
-                                    height: 12,
-                                    width: 12,
-                                    color: btnColor,
+                                    height: 16,
+                                    width: 16,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: btnColor)),
+                                    child: _value == 5
+                                        ? Center(
+                                            child: Container(
+                                              height: 10,
+                                              width: 10,
+                                              color: btnColor,
+                                            ),
+                                          )
+                                        : SizedBox(),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 4, right: 8),
+                                child: TextStyleRes.textUbuntuStyleFont2(
+                                    fontSize: 10,
+                                    text: "Editor",
+                                    textColor: colorWhite),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text("Editor"),
-                    ],
-                  ),
-                  value: 5,
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _value = 6;
-                        },
-                        child: Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: btnBorderWhite)),
-                          child: _value == 6
-                              ? Center(
+                      Container(
+                        color: _value == 6
+                            ? backContainerColor
+                            : Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 4, bottom: 4),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _value = 6;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, right: 8.0),
                                   child: Container(
-                                    height: 12,
-                                    width: 12,
-                                    color: btnColor,
+                                    height: 16,
+                                    width: 16,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: btnColor)),
+                                    child: _value == 6
+                                        ? Center(
+                                            child: Container(
+                                              height: 10,
+                                              width: 10,
+                                              color: btnColor,
+                                            ),
+                                          )
+                                        : SizedBox(),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 4, right: 8),
+                                child: TextStyleRes.textUbuntuStyleFont2(
+                                    fontSize: 10,
+                                    text: "Actors",
+                                    textColor: colorWhite),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text("Actors"),
-                    ],
-                  ),
-                  value: 6,
-                ),
-                DropdownMenuItem(
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _value = 7;
-                        },
-                        child: Container(
-                          height: 18,
-                          width: 18,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: btnBorderWhite)),
-                          child: _value == 7
-                              ? Center(
+                      Container(
+                        color: _value == 7
+                            ? backContainerColor
+                            : Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 4, bottom: 4),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _value = 7;
+                                  });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, right: 8.0),
                                   child: Container(
-                                    height: 12,
-                                    width: 12,
-                                    color: btnColor,
+                                    height: 16,
+                                    width: 16,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: btnColor)),
+                                    child: _value == 7
+                                        ? Center(
+                                            child: Container(
+                                              height: 10,
+                                              width: 10,
+                                              color: btnColor,
+                                            ),
+                                          )
+                                        : SizedBox(),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(bottom: 4, right: 8),
+                                child: TextStyleRes.textUbuntuStyleFont2(
+                                    fontSize: 10,
+                                    text: "Other",
+                                    textColor: colorWhite),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text("Other"),
                     ],
                   ),
-                  value: 7,
-                ),
+                )
               ],
-              onChanged: (value) {
-                setState(() {
-                  _value = value;
-                });
-              }),
-        ),
-      ),
+            ),
+          )),
     );
   }
 }

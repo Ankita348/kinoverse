@@ -4,6 +4,7 @@ import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_route.dart';
 import 'package:kinoverse/common/common_widget.dart';
+import 'package:kinoverse/common/custom_expansiontile.dart' as custom;
 
 class PostNewJob7 extends StatefulWidget {
   final Function callback;
@@ -90,7 +91,9 @@ class _PostNewJob7State extends State<PostNewJob7> {
           decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
           child: ListTileTheme(
             dense: true,
-            child: ExpansionTile(
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
               title: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
                   text: expansionTileView1Text(),
@@ -269,7 +272,9 @@ class _PostNewJob7State extends State<PostNewJob7> {
           decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
           child: ListTileTheme(
             dense: true,
-            child: ExpansionTile(
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
               title: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
                   text: expansionTileView2Text(),

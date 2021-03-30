@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kinoverse/common/StringRes.dart';
 import 'package:kinoverse/Page/dashboard_page/profile_pop_up.dart';
 import 'package:kinoverse/app.dart';
+import 'package:kinoverse/common/StringRes.dart';
+
 import 'TextStyleRes.dart';
+
 class CommonWidget {
   static int value = 1;
   static bool onOff = true;
@@ -398,7 +400,8 @@ class CommonWidget {
       onTap,
       imageName,
       borderColor,
-      sizeboxWidth,imageColor}) {
+      sizeboxWidth,
+      imageColor}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -489,9 +492,9 @@ class CommonWidget {
     );
   }
 
-  static hireAppbar(context,text, drawer(),{ txtAppBar}) {
+  static hireAppbar(context, text, drawer(), {txtAppBar}) {
     return PreferredSize(
-      preferredSize: Size.fromHeight(getDeviceHeight(context) * 0.11),
+      preferredSize: Size.fromHeight(75),
       child: Container(
         decoration: BoxDecoration(
           color: btnColor,
@@ -521,7 +524,7 @@ class CommonWidget {
                     ),
                   ),
                   Text(
-                    txtAppBar==null?"Jobs":txtAppBar,
+                    txtAppBar == null ? "Jobs" : txtAppBar,
                     style: TextStyle(
                         color: colorWhite,
                         fontFamily: App.font1,
@@ -633,9 +636,7 @@ class CommonWidget {
                     Tab(
                       text: "All",
                     ),
-                    Tab(
-                      text:"Posting"
-                    ),
+                    Tab(text: "Posting"),
                     Tab(
                       text: "Contract",
                     ),

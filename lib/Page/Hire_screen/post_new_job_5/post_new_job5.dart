@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
+import 'package:kinoverse/common/custom_expansiontile.dart' as custom;
 
 class PostNewJob5 extends StatefulWidget {
   final Function callback;
@@ -338,6 +339,16 @@ class _PostNewJob5State extends State<PostNewJob5> {
     );
   }
 
+  selectedItem() {
+    if (_value == 1) {
+      return "No Preference";
+    } else if (_value == 2) {
+      return "Freelancer";
+    } else if (_value == 3) {
+      return "Agency";
+    }
+  }
+
   expansionTileView() {
     return Padding(
       padding: const EdgeInsets.only(top: 15.0, bottom: 8, right: 120),
@@ -345,10 +356,12 @@ class _PostNewJob5State extends State<PostNewJob5> {
           decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
           child: ListTileTheme(
             dense: true,
-            child: ExpansionTile(
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
               title: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
-                  text: "No Preference",
+                  text: selectedItem(),
                   textColor: btnBorderWhite),
               children: [
                 Container(

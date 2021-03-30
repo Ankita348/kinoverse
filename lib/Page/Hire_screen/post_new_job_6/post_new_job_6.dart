@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
+import 'package:kinoverse/common/custom_expansiontile.dart' as custom;
 
 class PostNewJob6 extends StatefulWidget {
   final Function callback;
@@ -87,14 +88,16 @@ class _PostNewJob6State extends State<PostNewJob6> {
                               textColor: btnBorderWhite),
                           Spacer(),
                           Container(
-                            width: 10,
+                            width: 40,
                             child: TextField(
+                              textAlign: TextAlign.end,
                               style: TextStyle(
                                   fontFamily: App.font2,
                                   fontSize: 14,
                                   color: colorWhite),
                               controller: hourRangeController1,
                               decoration: InputDecoration(
+                                  filled: true,
                                   border: InputBorder.none,
                                   hintText: "0",
                                   hintStyle: TextStyle(
@@ -131,8 +134,9 @@ class _PostNewJob6State extends State<PostNewJob6> {
                               textColor: btnBorderWhite),
                           Spacer(),
                           Container(
-                            width: 10,
+                            width: 40,
                             child: TextField(
+                              textAlign: TextAlign.end,
                               style: TextStyle(
                                   fontFamily: App.font2,
                                   fontSize: 14,
@@ -294,6 +298,30 @@ class _PostNewJob6State extends State<PostNewJob6> {
     );
   }
 
+  selectedItem1() {
+    if (_value == 1) {
+      return "Any Level";
+    } else if (_value == 2) {
+      return "Conversational or better";
+    } else if (_value == 3) {
+      return "Fluent or better";
+    } else if (_value == 4) {
+      return "Native or billingual only";
+    }
+  }
+
+  selectedItem2() {
+    if (value1 == 1) {
+      return "More than 6 months";
+    } else if (value1 == 2) {
+      return "3 to 6 months";
+    } else if (value1 == 3) {
+      return "1 to 3 months";
+    } else if (value1 == 4) {
+      return "Less than 1 month";
+    }
+  }
+
   expansionTileView1() {
     return Padding(
       padding: const EdgeInsets.only(top: 15.0, bottom: 8, right: 120),
@@ -301,9 +329,13 @@ class _PostNewJob6State extends State<PostNewJob6> {
           decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
           child: ListTileTheme(
             dense: true,
-            child: ExpansionTile(
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
               title: TextStyleRes.textUbuntuStyleFont2(
-                  fontSize: 10, text: "Any Level", textColor: btnBorderWhite),
+                  fontSize: 10,
+                  text: selectedItem1(),
+                  textColor: btnBorderWhite),
               children: [
                 Container(
                   child: Column(
@@ -549,10 +581,12 @@ class _PostNewJob6State extends State<PostNewJob6> {
           decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
           child: ListTileTheme(
             dense: true,
-            child: ExpansionTile(
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
               title: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
-                  text: "More than 6 months",
+                  text: selectedItem2(),
                   textColor: btnBorderWhite),
               children: [
                 Container(

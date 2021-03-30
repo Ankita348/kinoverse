@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
@@ -12,6 +15,20 @@ class PostNewJob2 extends StatefulWidget {
 
 class _PostNewJob2State extends State<PostNewJob2> {
   final TextEditingController jobController = TextEditingController();
+  File _image;
+  final picker = ImagePicker();
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
   int toggle = 1;
   @override
   Widget build(BuildContext context) {
@@ -189,30 +206,35 @@ class _PostNewJob2State extends State<PostNewJob2> {
   uploadProject() {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
-      child: Container(
-          width: getDeviceWidth(context) / 2,
-          decoration: BoxDecoration(
-            border: Border.all(
-                color: btnBorderWhite, style: BorderStyle.solid, width: 0.80),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  App.uploadIcon,
-                  height: 23,
-                  width: 23,
-                ),
-                SizedBox(width: 10),
-                TextStyleRes.textUbuntuStyleFont2(
-                    fontSize: 10,
-                    text: "Upload Project Files",
-                    textColor: btnBorderWhite),
-              ],
+      child: GestureDetector(
+        onTap: () async {
+          await getImage();
+        },
+        child: Container(
+            width: getDeviceWidth(context) / 2,
+            decoration: BoxDecoration(
+              border: Border.all(
+                  color: btnBorderWhite, style: BorderStyle.solid, width: 0.80),
             ),
-          )),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    App.uploadIcon,
+                    height: 23,
+                    width: 23,
+                  ),
+                  SizedBox(width: 10),
+                  TextStyleRes.textUbuntuStyleFont2(
+                      fontSize: 10,
+                      text: "Upload Project Files",
+                      textColor: btnBorderWhite),
+                ],
+              ),
+            )),
+      ),
     );
   }
 }

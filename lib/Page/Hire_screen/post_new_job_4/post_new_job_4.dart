@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 import 'package:kinoverse/common/common_widget.dart';
+import 'package:kinoverse/common/custom_expansiontile.dart' as custom;
 
 class PostNewJob4 extends StatefulWidget {
   final Function callback;
@@ -227,6 +228,26 @@ class _PostNewJob4State extends State<PostNewJob4> {
     );
   }
 
+  selectedItem1() {
+    if (_value == 1) {
+      return "Mid-Editing";
+    } else if (_value == 2) {
+      return "Post - Editing";
+    } else {
+      return "Editing Platform";
+    }
+  }
+
+  selectedItem2() {
+    if (value1 == 1) {
+      return "Adobe Premiere";
+    } else if (value1 == 2) {
+      return "Final Cut Pro";
+    } else {
+      return "Editing Software";
+    }
+  }
+
   expansionTileView1() {
     return Padding(
       padding: const EdgeInsets.only(top: 15.0, bottom: 8),
@@ -234,7 +255,9 @@ class _PostNewJob4State extends State<PostNewJob4> {
           decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
           child: ListTileTheme(
             dense: true,
-            child: ExpansionTile(
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
               trailing: Container(
                 color: btnBorderWhite,
                 height: 1,
@@ -242,7 +265,7 @@ class _PostNewJob4State extends State<PostNewJob4> {
               ),
               title: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
-                  text: "Editing Platform",
+                  text: selectedItem1(),
                   textColor: btnBorderWhite),
               children: [
                 Container(
@@ -376,7 +399,9 @@ class _PostNewJob4State extends State<PostNewJob4> {
           decoration: BoxDecoration(border: Border.all(color: btnBorderWhite)),
           child: ListTileTheme(
             dense: true,
-            child: ExpansionTile(
+            child: custom.ExpansionTile(
+              headerBackgroundColor: bgColor,
+              iconColor: btnBorderWhite,
               trailing: Container(
                 color: btnBorderWhite,
                 height: 1,
@@ -384,7 +409,7 @@ class _PostNewJob4State extends State<PostNewJob4> {
               ),
               title: TextStyleRes.textUbuntuStyleFont2(
                   fontSize: 10,
-                  text: "Editing Software",
+                  text: selectedItem2(),
                   textColor: btnBorderWhite),
               children: [
                 Container(

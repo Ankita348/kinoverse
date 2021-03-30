@@ -11,7 +11,7 @@ class HireChatView extends StatefulWidget {
 
 class _HireChatViewState extends State<HireChatView> {
   TextEditingController typeController = TextEditingController();
-  String messageType = "sender";
+  String messageType = "receiver";
   List message = [
     "Hi, Maria!",
     "Fine!I've done several works..",

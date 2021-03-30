@@ -9,7 +9,9 @@ class ContainerFilmMakker extends StatefulWidget {
   double rating;
   bool isViewMore;
   int index;
-  ContainerFilmMakker({Key key, this.rating,this.isViewMore,this. index}) : super(key: key);
+
+  ContainerFilmMakker({Key key, this.rating, this.isViewMore, this.index})
+      : super(key: key);
 
   @override
   _ContainerFilmMakkerState createState() => _ContainerFilmMakkerState();
@@ -19,7 +21,6 @@ class _ContainerFilmMakkerState extends State<ContainerFilmMakker> {
   bool isSubscribe = true;
   bool isinviteTojob = false;
   bool isFav = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -114,11 +115,11 @@ class _ContainerFilmMakkerState extends State<ContainerFilmMakker> {
                 SizedBox(
                   height: 8,
                 ),
-               widget.isViewMore? TextStyleRes.textUbuntuStyleFont2(
+                TextStyleRes.textUbuntuStyleFont2(
                     maxLine: 3,
                     textColor: txtColor,
                     text: StringRes.experience,
-                    fontSize: 10):SizedBox(),
+                    fontSize: 10),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 10),
                   child: Row(
@@ -249,10 +250,21 @@ class _ContainerFilmMakkerState extends State<ContainerFilmMakker> {
                         textColor: txtDescriptionColor),
                   ],
                 ),
+                SizedBox(
+                  height: 8,
+                ),
+                widget.isViewMore
+                    ? TextStyleRes.textUbuntuStyleFont2(
+                        maxLine: 3,
+                        textColor: txtColor,
+                        text:
+                            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less....",
+                        fontSize: 10)
+                    : SizedBox(),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     setState(() {
-                      widget.isViewMore=!widget.isViewMore;
+                      widget.isViewMore = !widget.isViewMore;
                     });
                   },
                   child: Row(
@@ -262,11 +274,16 @@ class _ContainerFilmMakkerState extends State<ContainerFilmMakker> {
                         child: TextStyleRes.textUbuntuStyleFont2(
                             text: StringRes.viewMore,
                             fontSize: 12,
-                            textColor:  widget.isViewMore?btnColor:txtDescriptionColor),
+                            textColor: widget.isViewMore
+                                ? btnColor
+                                : txtDescriptionColor),
                       ),
                       Icon(
-                        widget.isViewMore?Icons.keyboard_arrow_up:Icons.keyboard_arrow_down,
-                        color:  widget.isViewMore?btnColor:txtDescriptionColor,
+                        widget.isViewMore
+                            ? Icons.keyboard_arrow_up
+                            : Icons.keyboard_arrow_down,
+                        color:
+                            widget.isViewMore ? btnColor : txtDescriptionColor,
                         size: 12,
                       )
                     ],

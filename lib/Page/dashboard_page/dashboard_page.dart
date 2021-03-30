@@ -64,7 +64,7 @@ class DashBoardPageState extends State<DashBoardPage>
                   () {
                     _scaffoldKey.currentState.openDrawer();
                   },
-                  txtAppBar: widget.menuIndex == 3 ? "Alerts" : "Jobs",
+                  txtAppBar: widget.menuIndex == 3 ? "Alerts" : widget.menuIndex == 2?"Messages": "Jobs",
                 ),
       backgroundColor: bgColor,
       drawer: Drawer(child: CommonWidget.drawer(context)),

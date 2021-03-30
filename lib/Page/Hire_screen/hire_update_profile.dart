@@ -147,68 +147,124 @@ class _HireUpdateProfileState extends State<HireUpdateProfile> {
           border: Border.all(
               color: btnBorderWhite, style: BorderStyle.solid, width: 0.80),
         ),
-        child: CountryCodePicker(
-          showFlag: false,
-          // showDropDownButton: true,
-
-          dialogBackgroundColor: bgColor,
-          dialogSize: Size.square(300),
-          boxDecoration:  BoxDecoration(
-            color: bgColor,
-            boxShadow: [
-              BoxShadow(
-                  color: shadowColorBlack,
-                  spreadRadius: 1,
-                  blurRadius: 6)
-            ],
-          ),
-          // backgroundColor: backContainerColor,
-          dialogTextStyle: TextStyle(
-            color: txtColor,
-          ),
-          textStyle: TextStyle(color: txtColor),
-          alignLeft: true,
-          hideSearch: true,
-
-          enabled: true,
-          onChanged: (c) => c.name,
-
-          // initialSelection: 'IND',
-          showCountryOnly: true,
-          showOnlyCountryWhenClosed: true,
-          // favorite: ['+39', 'FR'],
-        ),
-        // child: Theme(
-        //   data: ThemeData(canvasColor: bgColor),
-        //   child: DropdownButton(
-        //       underline: SizedBox(),
-        //       hint: TextStyleRes.textUbuntuStyleFont2(
-        //           fontSize: 10,
-        //           text: "UTC+07:00 Omsk, Novosibirsk",
-        //           textColor: txtColor),
-        //       style: TextStyle(fontSize: 10, color: txtColor),
-        //       value: _value,
-        //       items: [
-        //         DropdownMenuItem(
-        //           child: Text(
-        //             "UTC+07:00 Omsk, Novosibirsk",
-        //           ),
-        //           value: 1,
-        //         ),
-        //         DropdownMenuItem(
-        //           child: Text("Second Item"),
-        //           value: 2,
-        //         ),
-        //         DropdownMenuItem(child: Text("Third Item"), value: 3),
-        //         DropdownMenuItem(child: Text("Fourth Item"), value: 4)
-        //       ],
-        //       onChanged: (value) {
-        //         setState(() {
-        //           _value = value;
-        //         });
-        //       }),
-        //   child: ,
+        // child: CountryCodePicker(
+        //   showFlag: false,
+        //   // showDropDownButton: true,
+        //
+        //   dialogBackgroundColor: bgColor,
+        //   dialogSize: Size.square(300),
+        //   boxDecoration:  BoxDecoration(
+        //     color: bgColor,
+        //     boxShadow: [
+        //       BoxShadow(
+        //           color: shadowColorBlack,
+        //           spreadRadius: 1,
+        //           blurRadius: 6)
+        //     ],
+        //   ),
+        //   // backgroundColor: backContainerColor,
+        //   dialogTextStyle: TextStyle(
+        //     color: txtColor,
+        //   ),
+        //   textStyle: TextStyle(color: txtColor),
+        //   alignLeft: true,
+        //   hideSearch: true,
+        //
+        //   enabled: true,
+        //   onChanged: (c) => c.name,
+        //
+        //   // initialSelection: 'IND',
+        //   showCountryOnly: true,
+        //   showOnlyCountryWhenClosed: true,
+        //   // favorite: ['+39', 'FR'],
         // ),
+        child: Theme(
+          data: ThemeData(canvasColor: bgColor),
+          child: DropdownButton(
+
+              underline: SizedBox(),
+              isExpanded: true,
+              hint: TextStyleRes.textUbuntuStyleFont2(
+                  fontSize: 10,
+                  text: "UTC+07:00 Omsk, Novosibirsk",
+                  textColor: txtColor),
+              style: TextStyle(fontSize: 10, color: txtColor),
+              value: _value,
+              items: [
+                DropdownMenuItem(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: Text(
+                       "UTC+07:00 Omsk, Novosibirsk",
+                    ),
+                  ),
+                  value: 1,
+                ),
+                DropdownMenuItem(
+                  child:  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: Text(
+                      "India",
+                    ),
+                  ),
+                  value: 2,
+                ),
+                DropdownMenuItem(child:  Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Germany",
+                  ),
+                ), value: 3),
+                DropdownMenuItem(child:  Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Hong Kong",
+                  ),
+                ), value: 4),
+                DropdownMenuItem(child:  Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "France",
+                  ),
+                ), value: 5),
+                DropdownMenuItem(child:  Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "China",
+                  ),
+                ), value: 6),
+                DropdownMenuItem(child:  Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Canada",
+                  ),
+                ), value: 7),
+                DropdownMenuItem(child: Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Bhutan",
+                  ),
+                ), value: 8),
+                DropdownMenuItem(child:  Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "Australia",
+                  ),
+                ), value: 9),
+                DropdownMenuItem(child:  Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Text(
+                    "American samoa",
+                  ),
+                ), value: 10),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  _value = value;
+                });
+              }),
+
+        ),
       ),
     );
   }

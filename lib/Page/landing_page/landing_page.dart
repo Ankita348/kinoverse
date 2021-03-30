@@ -6,7 +6,6 @@ import 'package:kinoverse/model/slider_item.dart';
 
 import 'landing_page_model.dart';
 
-
 class LandingPage extends StatefulWidget {
   @override
   LandingPageState createState() => LandingPageState();
@@ -132,6 +131,7 @@ class LandingPageState extends State<LandingPage> {
       child: GestureDetector(
         onTap: () {
           // CommonRoutePage().gotoSignUpPage(context);
+          // CommonRoutePage.goToScreen(context,HireSignUp());
         },
         child: Container(
           height: 35,

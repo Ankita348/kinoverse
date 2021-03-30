@@ -7,4 +7,12 @@ class CommonRoutePage {
   }
 
 
+  static goToScreen(BuildContext context, screen) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => screen,
+      ),
+    );
+  }
 }

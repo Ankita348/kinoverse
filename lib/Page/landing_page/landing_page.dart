@@ -164,7 +164,7 @@ class LandingPageState extends State<LandingPage> {
   Widget signUp() {
     return GestureDetector(
       onTap: () {
-        CommonRoutePage().gotoSignUp(context);
+        //CommonRoutePage().gotoSignUp(context);
       },
       child: Text(
         'Sign Up',

@@ -3,7 +3,6 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/common_route.dart';
 import 'package:kinoverse/model/slider_item.dart';
-
 import 'landing_page_model.dart';
 
 class LandingPage extends StatefulWidget {
@@ -130,6 +129,8 @@ class LandingPageState extends State<LandingPage> {
     return Expanded(
       child: GestureDetector(
         onTap: () {
+          CommonRoutePage().gotoLogin(context);
+          //CommonRoutePage.goToScreen(context,HireSignUp());
           // CommonRoutePage().gotoSignUpPage(context);
           // CommonRoutePage.goToScreen(context,HireSignUp());
         },
@@ -150,6 +151,8 @@ class LandingPageState extends State<LandingPage> {
     );
   }
 
+// =====================       Sign Up        ========================
+
   Widget newText() {
     return Text(
       'New to the Kinoverse?   ',
@@ -164,7 +167,7 @@ class LandingPageState extends State<LandingPage> {
   Widget signUp() {
     return GestureDetector(
       onTap: () {
-        //CommonRoutePage().gotoSignUp(context);
+        CommonRoutePage().gotoSignUp(context);
       },
       child: Text(
         'Sign Up',

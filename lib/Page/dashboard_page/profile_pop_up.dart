@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kinoverse/app.dart';
 import 'package:kinoverse/common/TextStyleRes.dart';
 
@@ -186,7 +189,32 @@ class _ToggleButtonState extends State<ToggleButton> {
                   onTap: () {
                     setState(() {
                       value = 3;
-                      Navigator.pop(context);
+                      showDialog(
+                        context: context,
+
+                        builder: (context) => new AlertDialog(
+                          backgroundColor: bgColor,
+                          title: new Text('Are you sure?',style: TextStyle(color: txtColor),),
+                          content: new Text('Do you want to exit an App',style: TextStyle(color: txtColor),),
+                          actions: <Widget>[
+                            new FlatButton(
+                              onPressed: () => Navigator.of(context).pop(false),
+                              child: new Text('No',style: TextStyle(color: btnColor,fontSize: 20),),
+                            ),
+                            new FlatButton(
+                              onPressed: () {
+                                if (Platform.isAndroid) {
+                                  SystemNavigator.pop();
+                                } else if (Platform.isIOS) {
+                                  exit(0);
+                                }
+                              },
+                              child: new Text('Yes',style: TextStyle(color: btnColor,fontSize: 20),),
+                            ),
+                          ],
+                        ),
+                      );
+                     // Navigator.pop(context);
                     });
                   },
                   child: Container(

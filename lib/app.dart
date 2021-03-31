@@ -38,6 +38,7 @@ class App {
   static const Attachment = '$root' + 'Attachment Icon.png';
   static const sendMesg= '$root' + 'send_message.png';
   static const voiceCall = '$root' + 'Voice Call.png';
+  static const google = '$root' + 'google.png';
 
   static const uploadIcon = '$root' + 'uploadicon.png';
   static const ongoingIcon = '$root' + 'ongoingicon.png';
@@ -45,8 +46,10 @@ class App {
   static const complexProjectIcon = '$root' + 'complexprojecticon.png';
   static const freelancer = '$root' + 'freelancer.png';
   static const moreFreelancer = '$root' + 'morefreelancer.png';
-
-
+  static const download = '$root' + 'download.png';
+  static const Useremail = '$root' + 'Useremail.png';
+  static const Password = '$root' + 'Password.png';
+  static const envelope = '$root' + 'envelope.png';
   static const paypal = '$root' + 'paypal.png';
   static const depositIcon = '$root' + 'depositIcon.png';
   static const dabitIcon = '$root' + 'dabitIcon.png';
@@ -113,7 +116,6 @@ Color btnBorderWhite = Color(0x00ff929292);
 Color shadowColorBlack = Color(0xFF343739);
 Color blackText = Color(0xFF3E4345);
 Color blueGray = Color(0xFF383D3F);
-
 Color backContainerColor = Color(0xFF2B2F30);
 
 Color colorBrown = Colors.brown;

@@ -1,4 +1,4 @@
-import '../../app.dart';
+import '../../../app.dart';
 import 'landing_page.dart';
 
 class LandingPageViewModel {

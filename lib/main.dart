@@ -1,7 +1,6 @@
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:kinoverse/Page/landing_page/landing_page.dart';
-
+import 'Page/Worker_screen/landing_page/landing_page.dart';
 import 'app.dart';
 
 void main() {

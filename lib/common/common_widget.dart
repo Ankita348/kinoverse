@@ -11,7 +11,7 @@ class CommonWidget {
   static bool onOff = true;
 
   static squareButton(
-      {containerColor, height, width, text, textColor, fontSize, onTap}) {
+      {containerColor, height, width, text, textColor, fontSize, onTap,fontWeight}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(

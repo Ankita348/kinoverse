@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../app.dart';
 
 class TextStyleRes {
-  static textStyleFont1({text, double fontSize, textAlign, textColor}) {
+  static textStyleFont1(
+      {text, double fontSize, textAlign, textColor, fontWeight}) {
     return Text(
       text,
       overflow: TextOverflow.ellipsis,
@@ -16,20 +17,41 @@ class TextStyleRes {
     );
   }
 
-  static textUbuntuStyleFont2(
-      {text,
-      double fontSize,
-      textColor,
-      fontWeight,
-      maxLine,
-      textAlign,
-      decoration,
-      height}) {
+  static textUbuntuStyleFont2({text,
+    double fontSize,
+    textColor,
+    fontWeight,
+    maxLine,
+    textAlign,
+    decoration,
+    height}) {
     return Text(
       text,
       textAlign: textAlign,
       maxLines: maxLine,
       overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+          decoration: decoration,
+          height: height,
+          fontFamily: App.font2,
+          color: textColor,
+          fontSize: fontSize,
+          fontWeight: fontWeight),
+    );
+  }
+
+  static text({text,
+    double fontSize,
+    textColor,
+    fontWeight,
+    maxLine,
+    textAlign,
+    decoration,
+    height}) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      maxLines: maxLine,
       style: TextStyle(
           decoration: decoration,
           height: height,
